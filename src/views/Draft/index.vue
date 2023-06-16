@@ -333,61 +333,46 @@
     <Modal :is-open="showHelp" @close="showHelp = false">
       <template #title>How to play</template>
       <div class="mt-2">
-        <h3 className="text-md font-semibold mb-1">Game Type</h3>
-        <p className="text-sm text-gray-700 mb-4">
-          Standard is a team versus team setup with a maximum of 4 characters
-          per team. Abyss Floor 12 is an 8 versus 8 team setup
+        <p className="text-sm text-gray-500 mb-2">
+          The game will start when the game master clicks the start button (not
+          visible for players).
         </p>
-        <h3 className="text-md font-semibold mb-1">Mode</h3>
-        <p className="text-sm text-gray-700 mb-4">
-          <span className="font-semibold">(Standard only)</span> Choose 1 of
-          specific team sizes
+        <p className="text-sm text-gray-500 mb-2">
+          A text will be displayed on the center of this page. This is the
+          indicator for who is now selecting a character.
         </p>
-        <h3 className="text-md font-semibold mb-1">Auto Bans</h3>
-        <p className="text-sm text-gray-700 mb-4">
-          Select from a number of categories pertaining to a certain group of
-          characters
-          <span className="font-semibold"
-            >(Anemo characters, adult characters, etc)</span
-          >. If this is set, the characters that are related to one of the set
-          auto bans will not be visible from the character table, giving the
-          players a tighter selection of characters
+        <p className="text-sm text-gray-500 mb-2">
+          For the players, to select a character, simply click a character in
+          the character table in the center. A dialog will appear, asking if the
+          player wishes to proceed selecting that character. Once the character
+          is selected, that character will be removed from the table, and the
+          player will not be able to select a character, as this is now the
+          other player's turn.
         </p>
-        <h3 className="text-md font-semibold mb-1">With Timer</h3>
-        <p className="text-sm text-gray-700 mb-4">
-          Choose whether or not to include a timer
+        <p className="text-sm text-gray-500 mb-2">
+          To find a specific character, simply type the name of that character
+          in the text box above the character table.
         </p>
-        <h3 className="text-md font-semibold mb-1">Timer (Seconds)</h3>
-        <p className="text-sm text-gray-700 mb-4">
-          <span className="font-semibold">(With Timer only)</span> Choose 1
-          between choices of time (15 seconds, 30 seconds, 45 seconds, 60
-          seconds).
+        <p className="text-sm text-gray-500 mb-2">
+          The game ends when all players have selected the appropriate number of
+          characters for the mode, or when the game master clicks the
+          <span className="font-semibold">Go Back to Room</span> button (not
+          visible for players or viewers).
         </p>
-        <h3 className="text-md font-semibold mb-1">Audience</h3>
-        <p className="text-sm text-gray-700 mb-4">
-          A list of people who have entered your room. Here, you can choose the
-          players to participate in the drafting (exactly 2 players only)
+        <p className="text-sm text-gray-500 mb-8">
+          When the game master clicks the
+          <span className="font-semibold">Go Back to Room</span> button, the
+          game master, including the players and viewers, will be moved back to
+          the room page where the game master can readjust the game settings.
         </p>
-        <h3 className="text-md font-semibold mb-1">First Pick</h3>
-        <p className="text-sm text-gray-700 mb-4">
-          Choose which player to go first
-          <span className="font-semibold"
-            >(options will be visible once you select them from the Audience
-            field)</span
-          >
+        <p className="text-md text-red-600 mb-2">
+          <span className="font-bold">WARNING</span>
         </p>
-        <h3 className="text-md text-red-600 font-bold mb-1">WARNING</h3>
-        <p className="text-sm text-gray-700 mb-4">
-          Please advice everyone in the room to not refresh the room once you
-          start the game. Refreshing the page in the game page will cause bugs
-          for the user.
-        </p>
-        <p className="text-sm text-gray-700 mb-4">
-          If one of the players are having difficulty due to issues on their
-          end, you can click the
-          <span className="font-semibold">Go Back to Room</span> button. The app
-          will move all users including the host, players, and audience to the
-          previous page. And from here, you can restart the game.
+        <p className="text-sm text-gray-500 mb-2">
+          When you are in this page, do not attempt to refresh, as this might
+          cause the game to break. Also, if you are a player, do not press
+          <span className="italic">alt + tab</span> or change windows, as this
+          will cause some characters to not appear in your character panel
         </p>
       </div>
       <template #footer>
