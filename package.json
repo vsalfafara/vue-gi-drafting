@@ -26,6 +26,7 @@
     "@types/node": "^18.15.12",
     "@types/prettier": "^2.7.2",
     "@vitejs/plugin-vue": "^4.1.0",
+    "@volar/vue-language-core": "1.6.3",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "prettier": "^2.8.8",
