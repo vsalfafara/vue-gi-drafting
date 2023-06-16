@@ -90,7 +90,7 @@
       <div class="flex flex-col">
         <div class="relative flex h-16 justify-center">
           <div
-            v-if="withTimer"
+            v-if="withTimer === 'Yes'"
             className="flex w-36 justify-center items-center text-white bg-gray-800 bg-opacity-70 border-4 border-yellow-600 "
           >
             <span className="text-6xl font-bold pb-[.5rem]">{{ time }}</span>
@@ -272,7 +272,7 @@
     </TransitionRoot>
     <Modal
       :is-open="selectedCharacterDialog"
-      @close="selectedCharacterDialog = false"
+      @close="handleCloseSelectCharacterDialog"
     >
       <template #title>{{
         `${selectionType ? "Pick" : "Ban"} ${selectedCharacter?.name}?`
@@ -281,7 +281,10 @@
         Do you want to {{ selectionType ? "pick" : "ban" }}
         {{ selectedCharacter?.name }}?
       </div>
-      <template #footer>
+      <template
+        #footer
+        v-if="withTimer === 'No' || (withTimer === 'Yes' && time > 0)"
+      >
         <button class="danger" @click.once="selectedCharacterDialog = false">
           Uhh wait...
         </button>
@@ -568,6 +571,7 @@ onMounted(() => {
     if (time.value < 1) {
       selectionType.value = -1;
       selectedCharacterDialog.value = false;
+      selectedCharacter.value = NoPick;
     }
   });
 
@@ -715,6 +719,10 @@ function handleFilter() {
 function handleShowChat() {
   showChat.value = true;
   newMessage.value = false;
+}
+
+function handleCloseSelectCharacterDialog() {
+  selectedCharacter.value = NoPick;
 }
 
 function sendChat() {
