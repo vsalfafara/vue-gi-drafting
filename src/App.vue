@@ -30,7 +30,7 @@
                 className="h-6 w-auto"
                 :src="`${origin}/assets/Footer/vite.webp`"
             /></a>
-            <a href="https://react.dev" target="_blank"
+            <a href="https://vuejs.org" target="_blank"
               ><img
                 className="h-6 w-auto"
                 :src="`${origin}/assets/Footer/vue.webp`"
