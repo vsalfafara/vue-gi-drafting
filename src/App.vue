@@ -33,7 +33,7 @@
             <a href="https://react.dev" target="_blank"
               ><img
                 className="h-6 w-auto"
-                :src="`${origin}/assets/Footer/react.webp`"
+                :src="`${origin}/assets/Footer/vue.webp`"
             /></a>
             <a href="https://expressjs.com" target="_blank"
               ><img
