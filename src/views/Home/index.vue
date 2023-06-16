@@ -8,7 +8,9 @@
     <div class="p-5 pt-0 text-gray-600 drop-shadow-none">
       <form class="flex flex-col gap-2" @submit.prevent="submit">
         <Input v-model="name" placeholder="Enter username" />
-        <button class="primary">{{ roomId ? "Join" : "Create" }} Room</button>
+        <button class="primary" :disabled="name === ''">
+          {{ roomId ? "Join" : "Create" }} Room
+        </button>
       </form>
     </div>
   </Card>
