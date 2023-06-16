@@ -1,3 +1,4 @@
+import { preload } from "@/data";
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
@@ -15,6 +16,9 @@ const routes = [
     path: "/draft",
     name: "Draft",
     component: () => import("@/views/Draft/index.vue"),
+    beforeEnter: () => {
+      preload();
+    },
   },
 ];
 

@@ -815,7 +815,6 @@ const imageTypes: string[] = [];
 imageTypes.push("Thumbnail");
 imageTypes.push("Splash");
 imageTypes.push("Panel");
-imageTypes.push("Admin Panel");
 imageTypes.push("VS");
 
 export const imageList: string[] = Characters.map((character: Character) => {
@@ -823,6 +822,26 @@ export const imageList: string[] = Characters.map((character: Character) => {
     return `assets/Characters/${type}/${character.image}`;
   });
 }).flat();
+
+function preloadImage(src: string) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = function () {
+      resolve(img);
+    };
+    img.onerror = img.onabort = function () {
+      reject(src);
+    };
+    img.src = src;
+  });
+}
+
+export function preload() {
+  const imagesPromiseList: Promise<any>[] = [];
+  for (const i of imageList) {
+    imagesPromiseList.push(preloadImage(i));
+  }
+}
 
 export type Autoban = {
   readonly value: string;
