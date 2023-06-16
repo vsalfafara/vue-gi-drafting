@@ -18,5 +18,8 @@ export default defineConfig({
       usePolling: true,
     },
   },
+  build: {
+    target: "esnext", //browsers can handle the latest ES features
+  },
   base: "./",
 });
