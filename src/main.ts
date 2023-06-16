@@ -14,9 +14,10 @@ app.use(router);
 app.use(Particles);
 app.use(pinia);
 
-try {
-  await router.isReady();
-  app.mount("#app");
-} catch (error) {
-  console.log(error);
-}
+app.mount("#app");
+
+// try {
+//   await router.isReady();
+// } catch (error) {
+//   console.log(error);
+// }
