@@ -37,6 +37,7 @@ export const Regions = {
   Liyue: "Liyue",
   Inazuma: "Inazuma",
   Sumeru: "Sumeru",
+  Fontaine: "Fontaine",
   None: "None",
 };
 
@@ -442,6 +443,26 @@ export const Characters: Character[] = [
     bodyType: BodyTypes.Adult,
     weapon: Weapons.Catalyst,
     region: Regions.Mondstadt,
+  },
+  {
+    name: "Lynette",
+    vision: Elements.Anemo.name,
+    image: "Lynette.webp",
+    rarity: Rarities.Rare,
+    sex: Sexes.Female,
+    bodyType: BodyTypes.Teenager,
+    weapon: Weapons.Sword,
+    region: Regions.Fontaine,
+  },
+  {
+    name: "Lyney",
+    vision: Elements.Pyro.name,
+    image: "Lyney.webp",
+    rarity: Rarities.VeryRare,
+    sex: Sexes.Male,
+    bodyType: BodyTypes.Teenager,
+    weapon: Weapons.Bow,
+    region: Regions.Fontaine,
   },
   {
     name: "Mika",
