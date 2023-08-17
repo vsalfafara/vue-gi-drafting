@@ -25,13 +25,9 @@
         <div class="p-5 pt-0 text-gray-600 drop-shadow-none">
           <h3 class="text-md mb-1 font-semibold">New Characters</h3>
           <div class="flex justify-center gap-4 h-56 mb-4">
-            <div class="flex flex-col items-center">
-              <img src="assets/Characters/VS/Lyney.webp" class="h-full" alt="">
+            <div v-for="(character, index) in Characters.filter((character: Character) => character.isNew)" :key="index" class="flex flex-col items-center">
+              <img :src="`assets/Characters/VS/${character.image}`" class="h-full" alt="">
               <p class="text-md font-semibold">Lyney</p>
-            </div>
-            <div class="flex flex-col items-center">
-              <img src="assets/Characters/VS/Lynette.webp" class="h-full" alt="">
-              <p class="text-md font-semibold">Lynette</p>
             </div>
           </div>
         </div>
@@ -60,6 +56,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import { Character, Characters } from "@/data"
 import Card from "@/components/Card/index.vue";
 import Input from "@/components/Input/Input.vue";
 import socket from "@/socket";

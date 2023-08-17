@@ -77,6 +77,7 @@ export type Character = {
   bodyType?: string;
   weapon?: string;
   region?: string;
+  isNew?: boolean
 };
 
 export type Panel = {
@@ -453,6 +454,7 @@ export const Characters: Character[] = [
     bodyType: BodyTypes.Teenager,
     weapon: Weapons.Sword,
     region: Regions.Fontaine,
+    isNew: true
   },
   {
     name: "Lyney",
@@ -463,6 +465,7 @@ export const Characters: Character[] = [
     bodyType: BodyTypes.Teenager,
     weapon: Weapons.Bow,
     region: Regions.Fontaine,
+    isNew: true
   },
   {
     name: "Mika",
