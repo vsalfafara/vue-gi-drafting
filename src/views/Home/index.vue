@@ -27,7 +27,7 @@
           <div class="flex justify-center gap-4 h-56 mb-4">
             <div v-for="(character, index) in Characters.filter((character: Character) => character.isNew)" :key="index" class="flex flex-col items-center">
               <img :src="`assets/Characters/VS/${character.image}`" class="h-full" alt="">
-              <p class="text-md font-semibold">Lyney</p>
+              <p class="text-md font-semibold">{{character.name}}</p>
             </div>
           </div>
         </div>
