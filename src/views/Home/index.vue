@@ -1,5 +1,5 @@
 <template>
-  <div class="h-96 flex items-center gap-8">
+  <div class="flex h-96 items-center gap-8">
     <Card class="w-[25rem]">
       <template #title>
         <div class="p-5 text-center text-xl font-bold text-gray-600">
@@ -24,12 +24,24 @@
         </template>
         <div class="p-5 pt-0 text-gray-600 drop-shadow-none">
           <h3 class="text-md mb-1 font-semibold">New Characters</h3>
-          <div class="flex justify-center gap-4 h-56 mb-4">
-            <div v-for="(character, index) in Characters.filter((character: Character) => character.isNew)" :key="index" class="flex flex-col items-center">
-              <img :src="`assets/Characters/VS/${character.image}`" class="h-full" alt="">
-              <p class="text-md font-semibold">{{character.name}}</p>
+          <div class="mb-8 flex h-56 justify-center gap-4">
+            <div
+              v-for="(character, index) in Characters.filter((character: Character) => character.isNew)"
+              :key="index"
+              class="flex flex-col items-center"
+            >
+              <img
+                :src="`assets/Characters/VS/${character.image}`"
+                class="h-full"
+                alt=""
+              />
+              <p class="text-md font-semibold">{{ character.name }}</p>
             </div>
           </div>
+          <h3 class="text-md mb-1 font-semibold">Web App</h3>
+          <ul class="list-disc pl-8">
+            <li>New Background Image</li>
+          </ul>
         </div>
       </Card>
       <Card class="w-[25rem]">
@@ -43,10 +55,6 @@
           <ul class="list-disc pl-8">
             <li>Freminet</li>
           </ul>
-          <h3 class="text-md mb-1 font-semibold">Web App</h3>
-          <ul class="list-disc pl-8">
-            <li>New Background Image</li>
-          </ul>
         </div>
       </Card>
     </div>
@@ -56,7 +64,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import { Character, Characters } from "@/data"
+import { Character, Characters } from "@/data";
 import Card from "@/components/Card/index.vue";
 import Input from "@/components/Input/Input.vue";
 import socket from "@/socket";
