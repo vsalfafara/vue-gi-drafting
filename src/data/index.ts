@@ -844,11 +844,7 @@ export function resetCharacters() {
   availableCharacters = [...modifiedCharacters];
 }
 
-const imageTypes: string[] = [];
-imageTypes.push("Thumbnail");
-imageTypes.push("Splash");
-imageTypes.push("Panel");
-imageTypes.push("VS");
+const imageTypes: string[] = ["Thumbnail", "Splash", "Panel", "VS"];
 
 export const imageList: string[] = Characters.map((character: Character) => {
   return imageTypes.map((type: string) => {
