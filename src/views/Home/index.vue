@@ -38,10 +38,6 @@
               <p class="text-md font-semibold">{{ character.name }}</p>
             </div>
           </div>
-          <h3 class="text-md mb-1 font-semibold">Web App</h3>
-          <ul class="list-disc pl-8">
-            <li>New Background Image</li>
-          </ul>
         </div>
       </Card>
       <Card class="w-[25rem]">
@@ -53,7 +49,8 @@
         <div class="p-5 pt-0 text-gray-600 drop-shadow-none">
           <h3 class="text-md mb-1 font-semibold">Characters</h3>
           <ul class="list-disc pl-8">
-            <li>Freminet</li>
+            <li>Neuvilette</li>
+            <li>Wriothesley</li>
           </ul>
         </div>
       </Card>

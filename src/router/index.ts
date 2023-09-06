@@ -17,7 +17,7 @@ const routes = [
     name: "Draft",
     component: () => import("@/views/Draft/index.vue"),
     beforeEnter: () => {
-      preload();
+      // preload();
     },
   },
 ];

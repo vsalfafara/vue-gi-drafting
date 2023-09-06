@@ -77,7 +77,7 @@ export type Character = {
   bodyType?: string;
   weapon?: string;
   region?: string;
-  isNew?: boolean
+  isNew?: boolean;
 };
 
 export type Panel = {
@@ -286,6 +286,17 @@ export const Characters: Character[] = [
     region: Regions.Mondstadt,
   },
   {
+    name: "Freminet",
+    vision: Elements.Cryo.name,
+    image: "Freminet.webp",
+    rarity: Rarities.Rare,
+    sex: Sexes.Male,
+    bodyType: BodyTypes.Teenager,
+    weapon: Weapons.Claymore,
+    region: Regions.Fontaine,
+    isNew: true,
+  },
+  {
     name: "Ganyu",
     vision: Elements.Cryo.name,
     image: "Ganyu.webp",
@@ -454,7 +465,6 @@ export const Characters: Character[] = [
     bodyType: BodyTypes.Teenager,
     weapon: Weapons.Sword,
     region: Regions.Fontaine,
-    isNew: true
   },
   {
     name: "Lyney",
@@ -465,7 +475,6 @@ export const Characters: Character[] = [
     bodyType: BodyTypes.Teenager,
     weapon: Weapons.Bow,
     region: Regions.Fontaine,
-    isNew: true
   },
   {
     name: "Mika",
