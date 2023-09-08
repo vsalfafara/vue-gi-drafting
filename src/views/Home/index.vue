@@ -24,11 +24,13 @@
         </template>
         <div class="p-5 pt-0 text-gray-600 drop-shadow-none">
           <h3 class="text-md mb-1 font-semibold">New Characters</h3>
-          <div class="mb-8 flex h-56 justify-center gap-4">
+          <div class="mb-2 mb-8 flex h-56 justify-center gap-4">
             <div
               v-for="(character, index) in Characters.filter((character: Character) => character.isNew)"
               :key="index"
-              class="flex flex-col items-center"
+              :class="`flex flex-col items-center rounded-xl border-4 ${getCharacterBorder(
+                character
+              )}`"
             >
               <img
                 :src="`assets/Characters/VS/${character.image}`"
@@ -37,6 +39,12 @@
               />
               <p class="text-md font-semibold">{{ character.name }}</p>
             </div>
+          </div>
+          <div class="p-5 pt-0 text-gray-600 drop-shadow-none">
+            <h3 class="text-md mb-1 font-semibold">Web App</h3>
+            <ul class="list-disc pl-8">
+              <li>New VS screen</li>
+            </ul>
           </div>
         </div>
       </Card>
@@ -64,6 +72,7 @@ import { useRouter, useRoute } from "vue-router";
 import { Character, Characters } from "@/data";
 import Card from "@/components/Card/index.vue";
 import Input from "@/components/Input/Input.vue";
+import { getCharacterBorder } from "@/mixins/characterBorder";
 import socket from "@/socket";
 
 const name = ref<string>("");

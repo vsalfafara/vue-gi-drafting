@@ -2,7 +2,7 @@
   <div>
     <div
       v-if="showVSScreen"
-      class="relative flex h-[700px] w-[900px] flex-col items-center justify-start gap-2 text-white"
+      class="relative flex w-[900px] flex-col items-center justify-start gap-2 text-white"
     >
       <template v-if="user.isHost">
         <div class="absolute right-2 top-0 z-10">
@@ -16,10 +16,7 @@
         enterFrom="opacity-0 translate-x-24"
         enterTo="opacity-100 translate-x-0"
       >
-        <h1 className="text-4xl text-center">
-          {{ selection[0]?.player.name }}
-        </h1>
-        <div class="my-2 flex">
+        <div class="my-2 flex items-center">
           <div
             v-for="(character, index) in selection[0].selection.picks
               .characters"
@@ -27,17 +24,20 @@
           >
             <template v-if="character.name !== 'No Pick'">
               <div
-                :class="`mx-2 h-64 w-44 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
+                :class="`h-80 w-52 skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
                   character
                 )}`"
               >
                 <img
                   :src="`assets/Characters/VS/${character?.image}`"
-                  class="h-full w-full object-cover object-center"
+                  class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
                 />
               </div>
             </template>
           </div>
+          <h1 className="text-4xl text-center ml-16">
+            {{ selection[0]?.player.name }}
+          </h1>
         </div>
       </TransitionRoot>
       <TransitionRoot
@@ -55,7 +55,10 @@
         enterFrom="opacity-0 -translate-x-24"
         enterTo="opacity-100 translate-x-0"
       >
-        <div class="my-2 flex">
+        <div class="my-2 flex items-center">
+          <h1 className="text-4xl text-center mr-16">
+            {{ selection[1]?.player.name }}
+          </h1>
           <div
             v-for="(character, index) in selection[1].selection.picks
               .characters"
@@ -63,21 +66,18 @@
           >
             <template v-if="character.name !== 'No Pick'">
               <div
-                :class="`mx-2 h-64 w-44 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
+                :class="`h-80 w-52 skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
                   character
                 )}`"
               >
                 <img
                   :src="`assets/Characters/VS/${character?.image}`"
-                  class="h-full w-full object-cover object-center"
+                  class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
                 />
               </div>
             </template>
           </div>
         </div>
-        <h1 className="text-4xl text-center">
-          {{ selection[1]?.player.name }}
-        </h1>
       </TransitionRoot>
     </div>
     <TransitionRoot
@@ -161,13 +161,11 @@
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <!-- <div class="h-[650px] w-full items-center justify-center"> -->
               <img
                 :src="`assets/Characters/Splash/${splash?.image}`"
                 class="h-auto max-h-[650px] w-auto"
                 alt=""
               />
-              <!-- </div> -->
             </TransitionRoot>
             <TransitionRoot
               appear
@@ -399,12 +397,13 @@ import socket from "@/socket";
 import { TransitionRoot } from "@headlessui/vue";
 import Input from "@/components/Input/Input.vue";
 import Modal from "@/components/Modal/index.vue";
-import { ssGetAutoban, ssGetSelection, ssGetUser } from "@/storage";
-import { User } from "@/types/storage";
-import { ref, onMounted, onUnmounted } from "vue";
-import { useRouter, useRoute } from "vue-router";
 import Picks from "./components/panels/Picks.vue";
 import Bans from "./components/panels/Bans.vue";
+import { ssGetAutoban, ssGetSelection, ssGetUser } from "@/storage";
+import { User } from "@/types/storage";
+import { getCharacterBorder } from "@/mixins/characterBorder";
+import { ref, onMounted, onUnmounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
@@ -720,17 +719,5 @@ function sendChat() {
     message.value = "";
     socket.emit("chat", chatList.value);
   }
-}
-
-function getCharacterBorder(character: Character) {
-  let border = "border-gray-700";
-  if (character?.vision === "Anemo") border = "border-green-300";
-  else if (character?.vision === "Geo") border = "border-yellow-600";
-  else if (character?.vision === "Electro") border = "border-purple-600";
-  else if (character?.vision === "Dendro") border = "border-green-800";
-  else if (character?.vision === "Hydro") border = "border-blue-700";
-  else if (character?.vision === "Pyro") border = "border-red-400";
-  else if (character?.vision === "Cryo") border = "border-blue-200";
-  return border;
 }
 </script>

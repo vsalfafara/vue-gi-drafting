@@ -7,11 +7,10 @@
       id="tsparticles"
       class="fixed z-[-10]"
       :particlesInit="particlesInit"
-      :particlesLoaded="particlesLoaded"
       :options="options"
     />
     <div class="z-0 flex min-h-screen flex-col">
-      <div class="flex flex-grow items-center justify-center">
+      <div class="flex flex-grow items-center justify-center overflow-auto">
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">
             <component :is="Component" />
@@ -106,10 +105,6 @@ const options = {
 
 const particlesInit = async (engine: Engine) => {
   await loadFull(engine);
-};
-
-const particlesLoaded = async (container: any) => {
-  // console.log("Particles container loaded", container);
 };
 </script>
 
