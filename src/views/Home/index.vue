@@ -24,7 +24,7 @@
         </template>
         <div class="p-5 pt-0 text-gray-600 drop-shadow-none">
           <h3 class="text-md mb-1 font-semibold">New Characters</h3>
-          <div class="mb-2 mb-8 flex h-56 justify-center gap-4">
+          <div class="mb-8 flex h-56 justify-center gap-4">
             <div
               v-for="(character, index) in Characters.filter((character: Character) => character.isNew)"
               :key="index"
