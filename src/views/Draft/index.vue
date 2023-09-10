@@ -191,7 +191,9 @@
                   turn?.selection ? 'bg-green-500' : 'bg-red-500'
                 }`"
               >
-                <h1 class="text-3xl font-bold italic text-white">
+                <h1
+                  class="max-w-lg break-all text-center text-3xl font-bold italic text-white"
+                >
                   {{
                     turn?.player.id === user.id
                       ? "Your"
