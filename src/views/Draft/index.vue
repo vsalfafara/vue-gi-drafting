@@ -79,7 +79,7 @@
         </div>
       </TransitionRoot>
     </div>
-    <template v-if="!showPage">
+    <template>
       <img
         v-for="(img, index) in imageList"
         :key="index"
@@ -486,7 +486,6 @@ const showVSScreen = ref<boolean>(false);
 const showPlayerPanel1 = ref<boolean>(false);
 const showPlayerPanel2 = ref<boolean>(false);
 const showVS = ref<boolean>(false);
-const showPage = ref<boolean>(false);
 
 onMounted(() => {
   if (autoban) {
@@ -653,7 +652,6 @@ onUnmounted(() => {
 
 function imageHasLoaded(img: string) {
   if (img === imageList[imageList.length - 1]) {
-    showPage.value = true;
     console.log("All images have been loaded");
   }
 }
