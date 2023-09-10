@@ -2,7 +2,7 @@
   <div>
     <div
       v-if="showVSScreen"
-      class="relative flex w-[900px] flex-col items-center justify-start gap-2 text-white"
+      class="relative flex flex-col items-center justify-start gap-2 text-white"
     >
       <template v-if="user.isHost">
         <div class="absolute right-2 top-0 z-10">
@@ -35,7 +35,7 @@
               </div>
             </template>
           </div>
-          <h1 className="w-52 text-4xl text-center ml-16 ">
+          <h1 className="w-72 break-words text-4xl text-center ml-16 ">
             {{ selection[0]?.player.name }}
           </h1>
         </div>
@@ -55,7 +55,7 @@
         enterTo="opacity-100 translate-x-0"
       >
         <div class="my-2 flex items-center">
-          <h1 className="w-52 text-4xl text-center mr-16">
+          <h1 className="w-72 break-words text-4xl text-center mr-16">
             {{ selection[1]?.player.name }}
           </h1>
           <div
@@ -123,9 +123,13 @@
         </div>
         <div class="flex min-h-[650px]">
           <div class="flex flex-col justify-center sm:w-48 md:w-72 lg:w-96">
-            <div class="bg-green-500 text-center text-2xl font-bold text-white">
-              <p>
+            <div
+              class="mb-2 flex justify-center gap-2 px-4 text-center text-3xl font-bold text-white"
+            >
+              <p class="truncate">
                 {{ selection[0]?.player.name }}
+              </p>
+              <p>
                 {{ selection[0]?.player.id === user.id ? "(You)" : "" }}
               </p>
             </div>
@@ -196,7 +200,8 @@
                       ? "Your"
                       : `${turn?.player.name}'s`
                   }}
-                  turn to {{ turn?.selection ? "pick" : "ban" }}
+                  turn to
+                  {{ turn?.selection ? "pick" : "ban" }}
                 </h1>
               </div>
             </TransitionRoot>
@@ -250,9 +255,13 @@
             </template>
           </div>
           <div class="flex flex-col justify-center sm:w-48 md:w-72 lg:w-96">
-            <div class="bg-green-500 text-center text-2xl font-bold text-white">
-              <p>
+            <div
+              class="mb-2 flex justify-center gap-2 text-center text-3xl font-bold text-white"
+            >
+              <p class="truncate">
                 {{ selection[1]?.player.name }}
+              </p>
+              <p>
                 {{ selection[1]?.player.id === user.id ? "(You)" : "" }}
               </p>
             </div>
@@ -278,7 +287,7 @@
     </TransitionRoot>
     <Modal
       :is-open="selectedCharacterDialog"
-      @close="handleCloseSelectCharacterDialog"
+      @close="selectedCharacterDialog = false"
     >
       <template #title>{{
         `${selectionType ? "Pick" : "Ban"} ${selectedCharacter?.name}?`
@@ -362,14 +371,15 @@
         <p className="text-sm text-gray-500 mb-2">
           The game ends when all players have selected the appropriate number of
           characters for the mode, or when the game master clicks the
-          <span className="font-semibold">Go Back to Room</span> button (not
-          visible for players or viewers).
+          <span className="font-semibold">Go Back to Room</span>
+          button (not visible for players or viewers).
         </p>
         <p className="text-sm text-gray-500 mb-8">
           When the game master clicks the
-          <span className="font-semibold">Go Back to Room</span> button, the
-          game master, including the players and viewers, will be moved back to
-          the room page where the game master can readjust the game settings.
+          <span className="font-semibold">Go Back to Room</span>
+          button, the game master, including the players and viewers, will be
+          moved back to the room page where the game master can readjust the
+          game settings.
         </p>
         <p className="text-md text-red-600 mb-2">
           <span className="font-bold">WARNING</span>
@@ -720,10 +730,6 @@ function handleFilter() {
 function handleShowChat() {
   showChat.value = true;
   newMessage.value = false;
-}
-
-function handleCloseSelectCharacterDialog() {
-  selectedCharacter.value = NoPick;
 }
 
 function sendChat() {

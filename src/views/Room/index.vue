@@ -148,7 +148,14 @@
           <button class="text" @click="showHelpHost = true">Help</button>
           <button class="light" @click="copyLink">Copy Invitation Link</button>
           <button class="primary" @click="submit" :disabled="isDisabled">
-            Start Draft
+            <template v-if="formSubmitted">
+              <img
+                src="/assets/Misc/loading.svg"
+                class="h-5 animate-spin"
+                alt=""
+              />
+            </template>
+            <template v-else>Start Draft</template>
           </button>
         </div>
       </template>
@@ -284,6 +291,7 @@ const players = ref<User[]>([]);
 const firstPick = ref<number | null>(null);
 const showHelpHost = ref<boolean>(false);
 const showHelp = ref<boolean>(false);
+const formSubmitted = ref<boolean>(false);
 
 const isDisabled = computed(() => {
   return (
@@ -294,42 +302,6 @@ const isDisabled = computed(() => {
       (withTimer.value !== "Yes" || time.value)
     )
   );
-});
-
-function copyLink() {
-  navigator.clipboard.writeText(`${window.location.host}/${roomId}`);
-  toast("Invitation Link Copied", {
-    type: "success",
-    autoClose: 3000,
-  });
-}
-
-function submit() {
-  const form = {
-    gameType: type.value,
-    mode: mode.value,
-    players: players.value,
-    withTimer: withTimer.value,
-    time: Number(time.value),
-    firstPick: Number(firstPick.value),
-    roomId,
-    autoban: autoban.value,
-  };
-  socket.emit("startGame", form);
-}
-
-watch(type, () => {
-  mode.value = null;
-});
-
-watch(withTimer, () => {
-  if (withTimer.value === "Yes") {
-    time.value = null;
-  }
-});
-
-watch(players, () => {
-  firstPick.value = null;
 });
 
 onMounted(() => {
@@ -364,6 +336,8 @@ onMounted(() => {
       ssSetSelection(selectionArr);
       ssSetAutoban(autoban);
 
+      formSubmitted.value = false;
+
       push({
         name: "Draft",
         query: {
@@ -379,6 +353,43 @@ onMounted(() => {
 onUnmounted(() => {
   socket.off("getAllPlayersInRoom");
   socket.off("startGame");
+});
+
+function copyLink() {
+  navigator.clipboard.writeText(`${window.location.host}/${roomId}`);
+  toast("Invitation Link Copied", {
+    type: "success",
+    autoClose: 3000,
+  });
+}
+
+function submit() {
+  const form = {
+    gameType: type.value,
+    mode: mode.value,
+    players: players.value,
+    withTimer: withTimer.value,
+    time: Number(time.value),
+    firstPick: Number(firstPick.value),
+    roomId,
+    autoban: autoban.value,
+  };
+  formSubmitted.value = true;
+  socket.emit("startGame", form);
+}
+
+watch(type, () => {
+  mode.value = null;
+});
+
+watch(withTimer, () => {
+  if (withTimer.value === "Yes") {
+    time.value = null;
+  }
+});
+
+watch(players, () => {
+  firstPick.value = null;
 });
 </script>
 

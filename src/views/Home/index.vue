@@ -10,7 +10,14 @@
         <form class="flex flex-col gap-2" @submit.prevent="submit">
           <Input v-model="name" placeholder="Enter username" />
           <button class="primary" :disabled="name === ''">
-            {{ roomId ? "Join" : "Create" }} Room
+            <template v-if="formSubmitted">
+              <img
+                src="assets/Misc/loading.svg"
+                class="h-5 animate-spin"
+                alt=""
+              />
+            </template>
+            <template v-else> {{ roomId ? "Join" : "Create" }} Room </template>
           </button>
         </form>
       </div>
@@ -78,9 +85,11 @@ import socket from "@/socket";
 const name = ref<string>("");
 const { push } = useRouter();
 const { roomId } = useRoute().params;
+const formSubmitted = ref<boolean>(false);
 
 onMounted(() => {
   socket.on("getRoomId", (roomId: string) => {
+    formSubmitted.value = false;
     push({
       name: "Room",
       params: {
@@ -112,6 +121,7 @@ function joinRoom() {
 }
 
 function submit() {
+  formSubmitted.value = true;
   if (roomId) {
     joinRoom();
   } else {
