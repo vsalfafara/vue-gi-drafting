@@ -24,7 +24,7 @@
           >
             <template v-if="character.name !== 'No Pick'">
               <div
-                :class="`h-80 w-52 skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
+                :class="`h-72 w-52 skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
                   character
                 )}`"
               >
@@ -65,7 +65,7 @@
           >
             <template v-if="character.name !== 'No Pick'">
               <div
-                :class="`h-80 w-52 skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
+                :class="`h-72 w-52 skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
                   character
                 )}`"
               >
