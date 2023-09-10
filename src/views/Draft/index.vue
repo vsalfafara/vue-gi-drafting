@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      v-if="showVSScreen"
-      class="flex flex-col items-center justify-start gap-2 text-white"
-    >
+    <div v-if="showVSScreen" class="h-[668px] text-white">
       <template v-if="user.isHost">
         <div class="absolute right-4 top-4 z-10">
           <button class="warning" @click="goBack">Go back to Room</button>
