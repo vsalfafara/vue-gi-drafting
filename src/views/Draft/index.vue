@@ -35,7 +35,7 @@
               </div>
             </template>
           </div>
-          <h1 className="text-4xl text-center ml-16">
+          <h1 className="w-52 text-4xl text-center ml-16 ">
             {{ selection[0]?.player.name }}
           </h1>
         </div>
@@ -55,7 +55,7 @@
         enterTo="opacity-100 translate-x-0"
       >
         <div class="my-2 flex items-center">
-          <h1 className="text-4xl text-center mr-16">
+          <h1 className="w-52 text-4xl text-center mr-16">
             {{ selection[1]?.player.name }}
           </h1>
           <div
