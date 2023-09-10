@@ -2,10 +2,10 @@
   <div>
     <div
       v-if="showVSScreen"
-      class="relative flex flex-col items-center justify-start gap-2 text-white"
+      class="flex flex-col items-center justify-start gap-2 text-white"
     >
       <template v-if="user.isHost">
-        <div class="absolute right-2 top-0 z-10">
+        <div class="absolute right-4 top-4 z-10">
           <button class="warning" @click="goBack">Go back to Room</button>
         </div>
       </template>
