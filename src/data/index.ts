@@ -870,6 +870,7 @@ export function preload() {
   for (const i of imageList) {
     imagesPromiseList.push(preloadImage(i));
   }
+  console.log(imagesPromiseList);
 }
 
 export type Autoban = {

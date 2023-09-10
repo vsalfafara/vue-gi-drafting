@@ -48,7 +48,6 @@
       >
         <h1 className="text-6xl italic text-center">VS</h1>
       </TransitionRoot>
-
       <TransitionRoot
         :show="showPlayerPanel2"
         enter="transition duration-700"
@@ -80,6 +79,15 @@
         </div>
       </TransitionRoot>
     </div>
+    <template v-if="!showPage">
+      <img
+        v-for="(img, index) in imageList"
+        :key="index"
+        :src="img"
+        class="hidden"
+        @load="imageHasLoaded(img)"
+      />
+    </template>
     <TransitionRoot
       appear
       :show="!hideDraft"
@@ -392,6 +400,7 @@ import {
   characterExists,
   NoPick,
   filterCharacters,
+  imageList,
 } from "@/data";
 import socket from "@/socket";
 import { TransitionRoot } from "@headlessui/vue";
@@ -467,6 +476,7 @@ const showVSScreen = ref<boolean>(false);
 const showPlayerPanel1 = ref<boolean>(false);
 const showPlayerPanel2 = ref<boolean>(false);
 const showVS = ref<boolean>(false);
+const showPage = ref<boolean>(false);
 
 onMounted(() => {
   if (autoban) {
@@ -630,6 +640,13 @@ onUnmounted(() => {
   socket.off("setNewSelection");
   socket.off("removeCharacterFromPanel");
 });
+
+function imageHasLoaded(img: string) {
+  if (img === imageList[imageList.length - 1]) {
+    showPage.value = true;
+    console.log("All images have been loaded");
+  }
+}
 
 function start() {
   gameStart.value = true;
