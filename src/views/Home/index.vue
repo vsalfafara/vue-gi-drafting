@@ -12,7 +12,7 @@
           <button class="primary" :disabled="name === ''">
             <template v-if="formSubmitted">
               <img
-                src="assets/Misc/loading.svg"
+                src="/assets/Misc/loading.svg"
                 class="h-5 animate-spin"
                 alt=""
               />

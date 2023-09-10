@@ -6,7 +6,7 @@
   >
     <template v-if="character">
       <img
-        :src="`assets/Characters/Panel/${character?.image}`"
+        :src="`/assets/Characters/Panel/${character?.image}`"
         alt=""
         class="h-full w-full object-cover object-center"
       />
