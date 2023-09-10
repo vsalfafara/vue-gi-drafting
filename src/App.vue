@@ -47,8 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { loadFull } from "tsparticles";
-import { Engine } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
 
 const origin = window.location.origin;
 
@@ -103,8 +102,8 @@ const options = {
   retina_detect: true,
 };
 
-const particlesInit = async (engine: Engine) => {
-  await loadFull(engine);
+const particlesInit = async (engine: any) => {
+  await loadSlim(engine);
 };
 </script>
 
