@@ -294,7 +294,6 @@ export const Characters: Character[] = [
     bodyType: BodyTypes.Teenager,
     weapon: Weapons.Claymore,
     region: Regions.Fontaine,
-    isNew: true,
   },
   {
     name: "Ganyu",
@@ -535,6 +534,17 @@ export const Characters: Character[] = [
     bodyType: BodyTypes.Teenager,
     weapon: Weapons.Claymore,
     region: Regions.Mondstadt,
+  },
+  {
+    name: "Neuvillette",
+    vision: Elements.Hydro.name,
+    image: "Neuvillette.webp",
+    rarity: Rarities.VeryRare,
+    sex: Sexes.Male,
+    bodyType: BodyTypes.Adult,
+    weapon: Weapons.Catalyst,
+    region: Regions.Fontaine,
+    isNew: true,
   },
   {
     name: "Qiqi",

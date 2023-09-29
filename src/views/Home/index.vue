@@ -41,7 +41,7 @@
             >
               <img
                 :src="`assets/Characters/VS/${character.image}`"
-                class="h-full"
+                class="mb-2 h-full"
                 alt=""
               />
               <p class="text-md font-semibold">{{ character.name }}</p>
@@ -64,7 +64,6 @@
         <div class="p-5 pt-0 text-gray-600 drop-shadow-none">
           <h3 class="text-md mb-1 font-semibold">Characters</h3>
           <ul class="list-disc pl-8">
-            <li>Neuvilette</li>
             <li>Wriothesley</li>
           </ul>
         </div>
