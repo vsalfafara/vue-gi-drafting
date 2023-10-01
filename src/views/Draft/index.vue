@@ -9,97 +9,118 @@
           <button class="warning" @click="goBack">Go back to Room</button>
         </div>
       </template>
-
-      <TransitionRoot
-        :show="showPlayerPanel1"
-        enter="transition duration-700"
-        enterFrom="opacity-0 translate-x-24"
-        enterTo="opacity-100 translate-x-0"
-        as="template"
-      >
-        <div
-          class="my-2 flex flex-col-reverse items-center justify-center sm:flex-row"
+      <div :class="gameType === 'abyss' ? 'min-h-[748px]' : 'min-h-[620px]'">
+        <TransitionRoot
+          :show="showPlayerPanel1"
+          enter="transition duration-700"
+          enterFrom="opacity-0 translate-x-24"
+          enterTo="opacity-100 translate-x-0"
+          as="template"
         >
-          <div class="grid grid-cols-2 md:grid-cols-4">
-            <template
-              v-for="(character, index) in selection[0].selection.picks
-                .characters"
-              :key="index"
-            >
-              <template v-if="character.name !== 'No Pick'">
-                <div
-                  :class="`${
-                    gameType === 'abyss'
-                      ? 'h-40 w-48'
-                      : 'h-32 w-24 sm:h-44 sm:w-32 md:h-56 md:w-40 lg:h-64 lg:w-48'
-                  } skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
-                    character
-                  )}`"
-                >
-                  <img
-                    :src="`assets/Characters/VS/${character?.image}`"
-                    class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
-                  />
-                </div>
-              </template>
-            </template>
-          </div>
-          <h1
-            className="w-44 mb-4 sm:mb-0 break-words text-4xl text-center sm:ml-16"
+          <div
+            class="my-2 flex flex-col-reverse items-center justify-center sm:flex-row"
           >
-            {{ selection[0]?.player.name }}
-          </h1>
-        </div>
-      </TransitionRoot>
-      <TransitionRoot
-        :show="showVS"
-        enter="transition duration-300"
-        enterFrom="opacity-0 scale-50"
-        enterTo="opacity-100 scale-100"
-        as="template"
-      >
-        <h1 className="text-6xl italic text-center my-4">VS</h1>
-      </TransitionRoot>
-      <TransitionRoot
-        :show="showPlayerPanel2"
-        enter="transition duration-700"
-        enterFrom="opacity-0 -translate-x-24"
-        enterTo="opacity-100 translate-x-0"
-      >
-        <div
-          class="my-2 flex flex-col-reverse items-center justify-center sm:flex-row"
+            <div
+              :class="`grid ${
+                noOfSelection === 1
+                  ? 'grid-cols-1'
+                  : noOfSelection === 2
+                  ? 'grid-cols-2'
+                  : 'grid-cols-3'
+              } md:grid-cols-${
+                gameType !== 'abyss' ? noOfSelection : noOfSelection / 2
+              } justify-end`"
+            >
+              <template
+                v-for="(character, index) in selection[0].selection.picks
+                  .characters"
+                :key="index"
+              >
+                <template v-if="character.name !== 'No Pick'">
+                  <div
+                    :class="`${
+                      gameType === 'abyss'
+                        ? 'h-40 w-48'
+                        : 'h-36 w-28 sm:h-44 sm:w-32 md:h-56 md:w-40 lg:h-64 lg:w-48'
+                    } skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
+                      character
+                    )}`"
+                  >
+                    <img
+                      :src="`assets/Characters/VS/${character?.image}`"
+                      class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
+                    />
+                  </div>
+                </template>
+              </template>
+            </div>
+            <h1
+              className="w-44 mb-4 sm:mb-0 break-words text-4xl text-center sm:ml-16"
+            >
+              {{ selection[0]?.player.name }}
+            </h1>
+          </div>
+        </TransitionRoot>
+        <TransitionRoot
+          :show="showVS"
+          enter="transition duration-300"
+          enterFrom="opacity-0 scale-50"
+          enterTo="opacity-100 scale-100"
+          as="template"
         >
-          <h1
-            className="w-44 mt-4 sm:mt-0 break-words text-4xl text-center sm:mr-16"
+          <h1 className="text-6xl italic text-center my-4">VS</h1>
+        </TransitionRoot>
+        <TransitionRoot
+          :show="showPlayerPanel2"
+          enter="transition duration-700"
+          enterFrom="opacity-0 -translate-x-24"
+          enterTo="opacity-100 translate-x-0"
+        >
+          <div
+            class="my-2 flex flex-col-reverse items-center justify-center sm:flex-row"
           >
-            {{ selection[1]?.player.name }}
-          </h1>
-          <div class="grid grid-cols-2 md:grid-cols-4">
-            <template
-              v-for="(character, index) in selection[1].selection.picks
-                .characters"
-              :key="index"
+            <h1
+              className="w-44 mt-4 sm:mt-0 break-words text-4xl text-center sm:mr-16"
             >
-              <template v-if="character.name !== 'No Pick'">
-                <div
-                  :class="`${
-                    gameType === 'abyss'
-                      ? 'h-40 w-48'
-                      : 'h-32 w-24 sm:h-44 sm:w-32 md:h-56 md:w-40 lg:h-64 lg:w-48'
-                  } skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
-                    character
-                  )}`"
-                >
-                  <img
-                    :src="`assets/Characters/VS/${character?.image}`"
-                    class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
-                  />
-                </div>
+              {{ selection[1]?.player.name }}
+            </h1>
+            <div
+              :class="`grid ${
+                noOfSelection === 1
+                  ? 'grid-cols-1'
+                  : noOfSelection === 2
+                  ? 'grid-cols-2'
+                  : 'grid-cols-3'
+              } justify-end md:grid-cols-${
+                gameType !== 'abyss' ? noOfSelection : noOfSelection / 2
+              }`"
+            >
+              <template
+                v-for="(character, index) in selection[1].selection.picks
+                  .characters"
+                :key="index"
+              >
+                <template v-if="character.name !== 'No Pick'">
+                  <div
+                    :class="`${
+                      gameType === 'abyss'
+                        ? 'h-40 w-48'
+                        : 'h-36 w-28 sm:h-44 sm:w-32 md:h-56 md:w-40 lg:h-64 lg:w-48'
+                    } skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
+                      character
+                    )}`"
+                  >
+                    <img
+                      :src="`assets/Characters/VS/${character?.image}`"
+                      class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
+                    />
+                  </div>
+                </template>
               </template>
-            </template>
+            </div>
           </div>
-        </div>
-      </TransitionRoot>
+        </TransitionRoot>
+      </div>
     </div>
     <template>
       <img
@@ -497,6 +518,9 @@ const showPanel = ref<boolean>(false);
 const filter = ref<string>("");
 const elements = ref<any>(Elements);
 const selection = ref<Selections[]>(ssGetSelection());
+const noOfSelection = ref<number>(
+  selection.value[0].selection.picks.characters.length
+);
 const draftStart = ref<boolean>(false);
 const gameStart = ref<boolean>(false);
 const selectionType = ref<number>(-1);
