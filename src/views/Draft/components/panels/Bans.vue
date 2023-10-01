@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative overflow-hidden border-4 border-red-500 bg-gray-800 bg-opacity-70 sm:h-16 sm:w-20 md:h-16 md:w-24 lg:h-20 lg:w-32"
+    class="relative h-16 w-28 overflow-hidden border-4 border-red-500 bg-gray-800 bg-opacity-70"
   >
     <template v-if="character">
       <img

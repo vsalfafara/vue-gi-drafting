@@ -1,7 +1,7 @@
 <template>
-  <div class="relative z-0 min-h-screen bg-gray-900">
+  <div class="relative z-0 min-h-screen overflow-x-hidden bg-gray-900">
     <div
-      className="absolute top-0 left-0 h-screen w-screen bg-bg bg-cover bg-center opacity-30 z-[-20]"
+      className="absolute top-0 left-0 h-full w-screen bg-bg bg-cover bg-center opacity-30 z-[-20]"
     ></div>
     <vue-particles
       id="tsparticles"
@@ -9,14 +9,12 @@
       :particlesInit="particlesInit"
       :options="options"
     />
-    <div class="z-0 flex min-h-screen flex-col">
-      <div class="flex flex-grow items-center justify-center overflow-auto">
-        <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
-            <component :is="Component" />
-          </transition>
-        </router-view>
-      </div>
+    <div class="z-0 flex min-h-screen flex-col justify-between">
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
       <div className="flex justify-between px-16 py-4 bg-gray-700">
         <p className="text-white font-light">
           Developed by <span className="font-semibold">v.rx</span>

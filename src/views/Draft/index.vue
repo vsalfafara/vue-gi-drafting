@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <div v-if="showVSScreen" class="h-[668px] text-white">
+  <div class="flex min-h-[calc(100vh-4rem)] w-full">
+    <div
+      v-if="showVSScreen"
+      class="flex w-full flex-col items-center justify-center text-white"
+    >
       <template v-if="user.isHost">
         <div class="absolute right-4 top-4 z-10">
           <button class="warning" @click="goBack">Go back to Room</button>
@@ -12,27 +15,38 @@
         enter="transition duration-700"
         enterFrom="opacity-0 translate-x-24"
         enterTo="opacity-100 translate-x-0"
+        as="template"
       >
-        <div class="my-2 flex items-center">
-          <div
-            v-for="(character, index) in selection[0].selection.picks
-              .characters"
-            :key="index"
-          >
-            <template v-if="character.name !== 'No Pick'">
-              <div
-                :class="`h-72 w-52 skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
-                  character
-                )}`"
-              >
-                <img
-                  :src="`assets/Characters/VS/${character?.image}`"
-                  class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
-                />
-              </div>
+        <div
+          class="my-2 flex flex-col-reverse items-center justify-center sm:flex-row"
+        >
+          <div class="grid grid-cols-2 md:grid-cols-4">
+            <template
+              v-for="(character, index) in selection[0].selection.picks
+                .characters"
+              :key="index"
+            >
+              <template v-if="character.name !== 'No Pick'">
+                <div
+                  :class="`${
+                    gameType === 'abyss'
+                      ? 'h-40 w-48'
+                      : 'h-32 w-24 sm:h-44 sm:w-32 md:h-56 md:w-40 lg:h-64 lg:w-48'
+                  } skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
+                    character
+                  )}`"
+                >
+                  <img
+                    :src="`assets/Characters/VS/${character?.image}`"
+                    class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
+                  />
+                </div>
+              </template>
             </template>
           </div>
-          <h1 className="w-72 break-words text-4xl text-center ml-16 ">
+          <h1
+            className="w-44 mb-4 sm:mb-0 break-words text-4xl text-center sm:ml-16"
+          >
             {{ selection[0]?.player.name }}
           </h1>
         </div>
@@ -42,8 +56,9 @@
         enter="transition duration-300"
         enterFrom="opacity-0 scale-50"
         enterTo="opacity-100 scale-100"
+        as="template"
       >
-        <h1 className="text-6xl italic text-center">VS</h1>
+        <h1 className="text-6xl italic text-center my-4">VS</h1>
       </TransitionRoot>
       <TransitionRoot
         :show="showPlayerPanel2"
@@ -51,26 +66,36 @@
         enterFrom="opacity-0 -translate-x-24"
         enterTo="opacity-100 translate-x-0"
       >
-        <div class="my-2 flex items-center">
-          <h1 className="w-72 break-words text-4xl text-center mr-16">
+        <div
+          class="my-2 flex flex-col-reverse items-center justify-center sm:flex-row"
+        >
+          <h1
+            className="w-44 mt-4 sm:mt-0 break-words text-4xl text-center sm:mr-16"
+          >
             {{ selection[1]?.player.name }}
           </h1>
-          <div
-            v-for="(character, index) in selection[1].selection.picks
-              .characters"
-            :key="index"
-          >
-            <template v-if="character.name !== 'No Pick'">
-              <div
-                :class="`h-72 w-52 skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
-                  character
-                )}`"
-              >
-                <img
-                  :src="`assets/Characters/VS/${character?.image}`"
-                  class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
-                />
-              </div>
+          <div class="grid grid-cols-2 md:grid-cols-4">
+            <template
+              v-for="(character, index) in selection[1].selection.picks
+                .characters"
+              :key="index"
+            >
+              <template v-if="character.name !== 'No Pick'">
+                <div
+                  :class="`${
+                    gameType === 'abyss'
+                      ? 'h-40 w-48'
+                      : 'h-32 w-24 sm:h-44 sm:w-32 md:h-56 md:w-40 lg:h-64 lg:w-48'
+                  } skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
+                    character
+                  )}`"
+                >
+                  <img
+                    :src="`assets/Characters/VS/${character?.image}`"
+                    class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
+                  />
+                </div>
+              </template>
             </template>
           </div>
         </div>
@@ -91,9 +116,10 @@
       leave="transition duration-500"
       leaveFrom="opacity-100 translate-y-8"
       leaveTo="opacity-0 translate-y-16"
+      as="template"
     >
-      <div class="flex flex-col">
-        <div class="relative flex h-16 justify-center">
+      <div class="flex w-full flex-col">
+        <div class="relative z-20 m-4 flex h-16 justify-center">
           <div
             v-if="withTimer === 'Yes'"
             className="flex w-36 justify-center items-center text-white bg-gray-800 bg-opacity-70 border-4 border-yellow-600 "
@@ -118,36 +144,10 @@
             <button class="info" @click="showHelp = true">Help</button>
           </div>
         </div>
-        <div class="flex min-h-[650px]">
-          <div class="flex flex-col justify-center sm:w-48 md:w-72 lg:w-96">
-            <div
-              class="mb-2 flex justify-center gap-2 px-4 text-center text-3xl font-bold text-white"
-            >
-              <p class="truncate">
-                {{ selection[0]?.player.name }}
-              </p>
-              <p>
-                {{ selection[0]?.player.id === user.id ? "(You)" : "" }}
-              </p>
-            </div>
-            <div class="flex flex-wrap">
-              <Picks
-                v-for="character in selection[0].selection.picks.characters"
-                :key="character?.name"
-                :character="character"
-                :gameType="gameType"
-                :mode="mode"
-              />
-            </div>
-            <div class="flex flex-wrap">
-              <Bans
-                v-for="character in selection[0].selection.bans.characters"
-                :key="character?.name"
-                :character="character"
-              />
-            </div>
-          </div>
-          <div class="flex w-[750px] flex-col items-center justify-center">
+        <div class="mx-auto flex h-[500px] justify-center">
+          <div
+            class="flex w-full max-w-[900px] flex-col items-center justify-center"
+          >
             <TransitionRoot
               appear
               :show="draftStart"
@@ -157,24 +157,9 @@
               leave="transition duration-300"
               leaveFrom="opacity-100 translate-y-8"
               leaveTo="opacity-0 translate-y-16"
-              class="flex h-full items-center justify-center"
+              as="template"
             >
               <h1 class="text-6xl font-bold text-white">Draft Starting!</h1>
-            </TransitionRoot>
-            <TransitionRoot
-              :show="showSplash"
-              enter="transition ease-out duration-500"
-              enterFrom="opacity-0 -translate-y-28"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition-opacity ease-out duration-300"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <img
-                :src="`assets/Characters/Splash/${splash?.image}`"
-                class="h-auto max-h-[650px] w-auto"
-                alt=""
-              />
             </TransitionRoot>
             <TransitionRoot
               appear
@@ -204,6 +189,21 @@
                 </h1>
               </div>
             </TransitionRoot>
+            <TransitionRoot
+              :show="showSplash"
+              enter="transition ease-out duration-500"
+              enterFrom="opacity-0 -translate-y-28"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition-opacity ease-out duration-300"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <img
+                :src="`assets/Characters/Splash/${splash?.image}`"
+                class="h-[550px] w-auto"
+                alt=""
+              />
+            </TransitionRoot>
             <template v-if="!user.isHost">
               <TransitionRoot
                 :show="showPanel"
@@ -213,9 +213,10 @@
                 leave="transition-opacity duration-300"
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
+                class="z-10 h-[350px]"
               >
                 <div
-                  class="scrollbar-thumb-rounded-full h-[450px] overflow-y-scroll rounded-md border-4 border-yellow-600 bg-gray-800 p-4 scrollbar-thin scrollbar-thumb-gray-400"
+                  class="scrollbar-thumb-rounded-full z-100 h-full overflow-y-scroll rounded-md border-4 border-slate-800 bg-slate-900 p-4 scrollbar-thin scrollbar-thumb-gray-400"
                 >
                   <div>
                     <Input
@@ -253,9 +254,41 @@
               </TransitionRoot>
             </template>
           </div>
-          <div class="flex flex-col justify-center sm:w-48 md:w-72 lg:w-96">
+        </div>
+        <div
+          class="mx-auto mb-4 flex w-full max-w-[1200px] justify-evenly gap-2"
+        >
+          <div class="flex w-full flex-col justify-center">
             <div
-              class="mb-2 flex justify-center gap-2 text-center text-3xl font-bold text-white"
+              class="mb-2 flex justify-center gap-2 px-4 text-center text-3xl font-bold text-white"
+            >
+              <p class="truncate">
+                {{ selection[0]?.player.name }}
+              </p>
+              <p>
+                {{ selection[0]?.player.id === user.id ? "(You)" : "" }}
+              </p>
+            </div>
+            <div class="flex flex-row flex-wrap items-center justify-center">
+              <Picks
+                v-for="character in selection[0].selection.picks.characters"
+                :key="character?.name"
+                :character="character"
+                :gameType="gameType"
+                :mode="mode"
+              />
+            </div>
+            <div class="flex flex-wrap justify-center">
+              <Bans
+                v-for="character in selection[0].selection.bans.characters"
+                :key="character?.name"
+                :character="character"
+              />
+            </div>
+          </div>
+          <div class="flex w-full flex-col justify-center">
+            <div
+              class="mb-2 flex justify-center gap-2 px-4 text-center text-3xl font-bold text-white"
             >
               <p class="truncate">
                 {{ selection[1]?.player.name }}
@@ -264,7 +297,7 @@
                 {{ selection[1]?.player.id === user.id ? "(You)" : "" }}
               </p>
             </div>
-            <div class="flex flex-wrap">
+            <div class="flex flex-row flex-wrap items-center justify-center">
               <Picks
                 v-for="character in selection[1].selection.picks.characters"
                 :key="character?.name"
@@ -273,7 +306,7 @@
                 :mode="mode"
               />
             </div>
-            <div class="flex flex-row-reverse flex-wrap">
+            <div class="flex flex-wrap justify-center">
               <Bans
                 v-for="character in selection[1].selection.bans.characters"
                 :key="character?.name"
@@ -291,7 +324,7 @@
       <template #title>{{
         `${selectionType ? "Pick" : "Ban"} ${selectedCharacter?.name}?`
       }}</template>
-      <div class="text-sm text-gray-500">
+      <div class="text-sm text-gray-300">
         Do you want to {{ selectionType ? "pick" : "ban" }}
         {{ selectedCharacter?.name }}?
       </div>
@@ -347,15 +380,15 @@
     <Modal :is-open="showHelp" @close="showHelp = false">
       <template #title>How to play</template>
       <div class="mt-2">
-        <p className="text-sm text-gray-500 mb-2">
+        <p className="text-sm text-gray-300 mb-2">
           The game will start when the game master clicks the start button (not
           visible for players).
         </p>
-        <p className="text-sm text-gray-500 mb-2">
+        <p className="text-sm text-gray-300 mb-2">
           A text will be displayed on the center of this page. This is the
           indicator for who is now selecting a character.
         </p>
-        <p className="text-sm text-gray-500 mb-2">
+        <p className="text-sm text-gray-300 mb-2">
           For the players, to select a character, simply click a character in
           the character table in the center. A dialog will appear, asking if the
           player wishes to proceed selecting that character. Once the character
@@ -363,17 +396,17 @@
           player will not be able to select a character, as this is now the
           other player's turn.
         </p>
-        <p className="text-sm text-gray-500 mb-2">
+        <p className="text-sm text-gray-300 mb-2">
           To find a specific character, simply type the name of that character
           in the text box above the character table.
         </p>
-        <p className="text-sm text-gray-500 mb-2">
+        <p className="text-sm text-gray-300 mb-2">
           The game ends when all players have selected the appropriate number of
           characters for the mode, or when the game master clicks the
           <span className="font-semibold">Go Back to Room</span>
           button (not visible for players or viewers).
         </p>
-        <p className="text-sm text-gray-500 mb-8">
+        <p className="text-sm text-gray-300 mb-8">
           When the game master clicks the
           <span className="font-semibold">Go Back to Room</span>
           button, the game master, including the players and viewers, will be
@@ -383,7 +416,7 @@
         <p className="text-md text-red-600 mb-2">
           <span className="font-bold">WARNING</span>
         </p>
-        <p className="text-sm text-gray-500 mb-2">
+        <p className="text-sm text-gray-300 mb-2">
           When you are in this page, do not attempt to refresh, as this might
           cause the game to break. Also, if you are a player, do not press
           <span className="italic">alt + tab</span> or change windows, as this

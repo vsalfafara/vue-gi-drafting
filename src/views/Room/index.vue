@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="flex h-[calc(100vh-4rem)] items-center justify-center">
     <Card v-if="user.isHost" class="w-[40rem]">
       <template #title>
-        <div class="p-5 text-xl font-bold text-gray-600">Draft Settings</div>
+        <div class="p-5 text-xl font-bold text-gray-300">Draft Settings</div>
       </template>
-      <div class="p-5 pt-0 text-gray-600 drop-shadow-none">
+      <div class="p-5 pt-0 text-gray-300 drop-shadow-none">
         <FormItem label="Draft Type">
-          <div class="flex w-full flex-wrap gap-2">
+          <div class="flex w-full flex-wrap gap-1">
             <Radio
               name="type"
               id="std"
@@ -23,14 +23,16 @@
             />
           </div>
         </FormItem>
-        <FormItem v-if="type === 'std'" label="Mode">
-          <div class="flex w-full flex-wrap gap-2">
+        <FormItem label="Mode">
+          <div class="flex w-full flex-wrap gap-1">
             <Radio
               name="mode"
               id="1v1"
               labelName="1v1"
               value="1v1"
               v-model="mode"
+              :disabled="type !== 'std'"
+              :checked="mode === '1v1'"
             />
             <Radio
               name="mode"
@@ -38,6 +40,8 @@
               labelName="2v2"
               value="2v2"
               v-model="mode"
+              :disabled="type !== 'std'"
+              :checked="mode === '2v2'"
             />
             <Radio
               name="mode"
@@ -45,6 +49,8 @@
               labelName="3v3"
               value="3v3"
               v-model="mode"
+              :disabled="type !== 'std'"
+              :checked="mode === '3v3'"
             />
             <Radio
               name="mode"
@@ -52,6 +58,8 @@
               labelName="4v4"
               value="4v4"
               v-model="mode"
+              :disabled="type !== 'std'"
+              :checked="mode === '4v4'"
             />
           </div>
         </FormItem>
@@ -67,7 +75,7 @@
           ></multiselect>
         </FormItem>
         <FormItem label="With Time">
-          <div class="flex w-full flex-wrap gap-2">
+          <div class="flex w-full flex-wrap gap-1">
             <Radio
               name="with-time"
               id="Yes"
@@ -84,14 +92,16 @@
             />
           </div>
         </FormItem>
-        <FormItem v-if="withTimer === 'Yes'" label="Time (Seconds)">
-          <div class="flex w-full flex-wrap gap-2">
+        <FormItem label="Time (Seconds)">
+          <div class="flex w-full flex-wrap gap-1">
             <Radio
               name="time"
               id="15"
               labelName="15"
               value="15"
               v-model="time"
+              :disabled="withTimer !== 'Yes'"
+              :checked="time === '15'"
             />
             <Radio
               name="time"
@@ -99,6 +109,8 @@
               labelName="30"
               value="30"
               v-model="time"
+              :disabled="withTimer !== 'Yes'"
+              :checked="time === '30'"
             />
             <Radio
               name="time"
@@ -106,6 +118,8 @@
               labelName="45"
               value="45"
               v-model="time"
+              :disabled="withTimer !== 'Yes'"
+              :checked="time === '45'"
             />
             <Radio
               name="time"
@@ -113,6 +127,8 @@
               labelName="60"
               value="60"
               v-model="time"
+              :disabled="withTimer !== 'Yes'"
+              :checked="time === '60'"
             />
           </div>
         </FormItem>
@@ -126,7 +142,22 @@
               :labelName="user.name"
               :value="user"
               v-model="players"
-            ></Checkbox>
+            />
+            <!-- <div v-for="user in audience" :key="user.id" class="flex">
+              <input
+                type="checkbox"
+                :id="user.id"
+                :value="user"
+                v-model="players"
+                class="peer hidden"
+              />
+              <label
+                :for="user.id"
+                class="cursor-pointer select-none rounded-lg border-2 border-gray-200 px-6 py-3 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:border-gray-200 peer-checked:bg-gray-200 peer-checked:text-gray-900"
+              >
+                {{ user.name }}
+              </label>
+            </div> -->
           </div>
         </FormItem>
         <FormItem label="First Pick">
@@ -161,7 +192,7 @@
       </template>
     </Card>
     <Card v-else>
-      <div class="p-5 font-semibold text-gray-600 drop-shadow-none">
+      <div class="p-5 font-semibold text-gray-300 drop-shadow-none">
         Waiting for host to start
       </div>
       <template #footer>
@@ -172,19 +203,19 @@
     </Card>
     <Modal :is-open="showHelpHost" @close="showHelpHost = false">
       <template #title>How to play</template>
-      <div class="mt-2">
+      <div class="mt-2 text-gray-300">
         <h3 class="text-md mb-1 font-semibold">Game Type</h3>
-        <p class="mb-4 text-sm text-gray-700">
+        <p class="mb-4 text-sm">
           Standard is a team versus team setup with a maximum of 4 characters
           per team. Abyss Floor 12 is an 8 versus 8 team setup
         </p>
         <h3 class="text-md mb-1 font-semibold">Mode</h3>
-        <p class="mb-4 text-sm text-gray-700">
+        <p class="mb-4 text-sm">
           <span class="font-semibold">(Standard only)</span> Choose 1 of
           specific team sizes
         </p>
         <h3 class="text-md mb-1 font-semibold">Auto Bans</h3>
-        <p class="mb-4 text-sm text-gray-700">
+        <p class="mb-4 text-sm">
           Select from a number of categories pertaining to a certain group of
           characters
           <span class="font-semibold"
@@ -194,21 +225,19 @@
           players a tighter selection of characters
         </p>
         <h3 class="text-md mb-1 font-semibold">With Timer</h3>
-        <p class="mb-4 text-sm text-gray-700">
-          Choose whether or not to include a timer
-        </p>
+        <p class="mb-4 text-sm">Choose whether or not to include a timer</p>
         <h3 class="text-md mb-1 font-semibold">Timer (Seconds)</h3>
-        <p class="mb-4 text-sm text-gray-700">
+        <p class="mb-4 text-sm">
           <span class="font-semibold">(With Timer only)</span> Choose 1 between
           choices of time (15 seconds, 30 seconds, 45 seconds, 60 seconds).
         </p>
         <h3 class="text-md mb-1 font-semibold">Audience</h3>
-        <p class="mb-4 text-sm text-gray-700">
+        <p class="mb-4 text-sm">
           A list of people who have entered your room. Here, you can choose the
           players to participate in the drafting (exactly 2 players only)
         </p>
         <h3 class="text-md mb-1 font-semibold">First Pick</h3>
-        <p class="mb-4 text-sm text-gray-700">
+        <p class="mb-4 text-sm">
           Choose which player to go first
           <span class="font-semibold"
             >(options will be visible once you select them from the Audience
@@ -216,12 +245,12 @@
           >
         </p>
         <h3 class="text-md mb-1 font-bold text-red-600">WARNING</h3>
-        <p class="mb-4 text-sm text-gray-700">
+        <p class="mb-4 text-sm">
           Please advice everyone in the room to not refresh the room once you
           start the game. Refreshing the page in the game page will cause bugs
           for the user.
         </p>
-        <p class="mb-4 text-sm text-gray-700">
+        <p class="mb-4 text-sm">
           If one of the players are having difficulty due to issues on their
           end, you can click the
           <span class="font-semibold">Go Back to Room</span> button. The app
@@ -235,20 +264,20 @@
     </Modal>
     <Modal :is-open="showHelp" @close="showHelp = false">
       <template #title>How to play</template>
-      <div class="mt-2">
-        <p class="mb-4 text-sm text-gray-700">
+      <div class="mt-2 text-gray-300">
+        <p class="mb-4 text-sm">
           This is the waiting room for the audience and players. Please wait for
           the host to start the drafting.
         </p>
 
         <h3 class="text-md mb-1 font-bold text-red-600">WARNING</h3>
-        <p class="mb-4 text-sm text-gray-700">
+        <p class="mb-4 text-sm">
           Once the host starts the drafting, you will be moved to the drafting
           page.
           <span class="font-semibold">Do not reload/refresh this page</span> as
           this will cause bugs on your end.
         </p>
-        <p class="mb-4 text-sm text-gray-700">
+        <p class="mb-4 text-sm">
           You can communicate through chat by clicking the
           <span class="font-semibold">Chat</span> button on the top left if you
           are having issues on the drafting.
@@ -285,7 +314,7 @@ const type = ref<string>("");
 const mode = ref<string | null>(null);
 const autoban = ref<Autoban[]>([]);
 const withTimer = ref<string>("No");
-const time = ref<number | null>(null);
+const time = ref<string | null>(null);
 const audience = ref<User[]>([]);
 const players = ref<User[]>([]);
 const firstPick = ref<number | null>(null);
@@ -383,13 +412,7 @@ watch(type, () => {
 });
 
 watch(withTimer, () => {
-  if (withTimer.value === "Yes") {
-    time.value = null;
-  }
-});
-
-watch(players, () => {
-  firstPick.value = null;
+  time.value = null;
 });
 </script>
 

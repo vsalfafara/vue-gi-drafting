@@ -1,7 +1,7 @@
 import { Character } from "@/data";
 
 export function getCharacterBorder(character: Character) {
-  let frameStyle = "border-gray-700";
+  let frameStyle = "";
   if (character?.vision === "Anemo")
     frameStyle =
       "border-green-300 bg-gradient-to-r from-green-200 to-transparent";

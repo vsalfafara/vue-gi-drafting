@@ -3,3 +3,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.multiselect__tags,
+.multiselect__input,
+.multiselect__element {
+  @apply bg-slate-800 !important;
+}
+
+.multiselect__tags,
+.multiselect__content-wrapper {
+  @apply border-slate-800 !important;
+}
+
+.multiselect__input,
+.multiselect__input::placeholder,
+.multiselect__element {
+  @apply text-gray-300;
+}
+
+.multiselect__option--selected {
+  @apply bg-slate-700 !important;
+  @apply text-gray-300 !important;
+}

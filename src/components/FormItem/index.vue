@@ -1,5 +1,5 @@
 <template>
-  <div class="my-2 flex items-center">
+  <div class="my-4 flex items-center">
     <label v-if="label" class="w-[12rem] pr-4 text-left">{{ label }}</label>
     <slot></slot>
   </div>
