@@ -981,4 +981,8 @@ export const AutobanOptions: Autoban[] = [
     value: Regions.Sumeru,
     label: "Sumeru-released Characters",
   },
+  {
+    value: Regions.Fontaine,
+    label: "Fontaine-released Characters",
+  },
 ];
