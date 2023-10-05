@@ -31,7 +31,7 @@ function getPanelSize() {
   if (gameType !== "abyss" && mode !== "4v4") {
     if (mode === "1v1") return "h-52 w-full";
     else if (mode === "2v2") return "h-36 w-1/2 min-w-[200px]";
-    else if (mode === "3v3") return "h-28 w-44";
-  } else return "min-w[12rem] h-28 w-1/2";
+    else if (mode === "3v3") return "h-24 w-48";
+  } else return "min-w-[12rem] h-28 w-1/2";
 }
 </script>
