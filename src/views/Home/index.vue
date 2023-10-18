@@ -65,7 +65,8 @@
         <div class="p-5 pt-0 text-gray-300 drop-shadow-none">
           <h3 class="text-md mb-1 font-semibold">Characters</h3>
           <ul class="list-disc pl-8">
-            <li>Wriothesley</li>
+            <li>Furina</li>
+            <li>Charlotte</li>
           </ul>
         </div>
       </Card>

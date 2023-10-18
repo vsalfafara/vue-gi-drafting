@@ -544,7 +544,6 @@ export const Characters: Character[] = [
     bodyType: BodyTypes.Adult,
     weapon: Weapons.Catalyst,
     region: Regions.Fontaine,
-    isNew: true,
   },
   {
     name: "Qiqi",
@@ -695,6 +694,17 @@ export const Characters: Character[] = [
     bodyType: BodyTypes.Teenager,
     weapon: Weapons.Catalyst,
     region: Regions.Sumeru,
+  },
+  {
+    name: "Wriothesley",
+    vision: Elements.Cryo.name,
+    image: "Wriothesley.webp",
+    rarity: Rarities.VeryRare,
+    sex: Sexes.Male,
+    bodyType: BodyTypes.Adult,
+    weapon: Weapons.Catalyst,
+    region: Regions.Fontaine,
+    isNew: true
   },
   {
     name: "Xiangling",
