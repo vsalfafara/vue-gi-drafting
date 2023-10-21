@@ -122,15 +122,6 @@
         </TransitionRoot>
       </div>
     </div>
-    <template>
-      <img
-        v-for="(img, index) in imageList"
-        :key="index"
-        :src="img"
-        class="hidden"
-        @load="imageHasLoaded(img)"
-      />
-    </template>
     <TransitionRoot
       appear
       :show="!hideDraft"
@@ -463,7 +454,6 @@ import {
   characterExists,
   NoPick,
   filterCharacters,
-  imageList,
 } from "@/data";
 import socket from "@/socket";
 import { TransitionRoot } from "@headlessui/vue";
@@ -705,12 +695,6 @@ onUnmounted(() => {
   socket.off("setNewSelection");
   socket.off("removeCharacterFromPanel");
 });
-
-function imageHasLoaded(img: string) {
-  if (img === imageList[imageList.length - 1]) {
-    console.log("All images have been loaded");
-  }
-}
 
 function start() {
   gameStart.value = true;
