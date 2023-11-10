@@ -186,6 +186,17 @@ export const Characters: Character[] = [
     region: Regions.Sumeru,
   },
   {
+    name: "Charlotte",
+    vision: Elements.Cryo.name,
+    image: "Charlotte.webp",
+    rarity: Rarities.Rare,
+    sex: Sexes.Female,
+    bodyType: BodyTypes.Teenager,
+    weapon: Weapons.Catalyst,
+    region: Regions.Fontaine,
+    isNew: true,
+  },
+  {
     name: "Chongyun",
     vision: Elements.Cryo.name,
     image: "Chongyun.webp",
@@ -294,6 +305,17 @@ export const Characters: Character[] = [
     bodyType: BodyTypes.Teenager,
     weapon: Weapons.Claymore,
     region: Regions.Fontaine,
+  },
+  {
+    name: "Furina",
+    vision: Elements.Hydro.name,
+    image: "Furina.webp",
+    rarity: Rarities.VeryRare,
+    sex: Sexes.Female,
+    bodyType: BodyTypes.Teenager,
+    weapon: Weapons.Sword,
+    region: Regions.Fontaine,
+    isNew: true,
   },
   {
     name: "Ganyu",
@@ -704,7 +726,6 @@ export const Characters: Character[] = [
     bodyType: BodyTypes.Adult,
     weapon: Weapons.Catalyst,
     region: Regions.Fontaine,
-    isNew: true
   },
   {
     name: "Xiangling",

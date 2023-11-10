@@ -65,8 +65,8 @@
         <div class="p-5 pt-0 text-gray-300 drop-shadow-none">
           <h3 class="text-md mb-1 font-semibold">Characters</h3>
           <ul class="list-disc pl-8">
-            <li>Furina</li>
-            <li>Charlotte</li>
+            <li>Navia</li>
+            <li>Chevreuse</li>
           </ul>
         </div>
       </Card>
@@ -80,7 +80,6 @@ import { useRouter, useRoute } from "vue-router";
 import { Character, Characters } from "@/data";
 import Card from "@/components/Card/index.vue";
 import Input from "@/components/Input/Input.vue";
-import { getCharacterBorder } from "@/mixins/characterBorder";
 import socket from "@/socket";
 
 const name = ref<string>("");
