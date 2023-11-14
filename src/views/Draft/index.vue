@@ -48,7 +48,7 @@
                   >
                     <img
                       :src="`assets/Characters/VS/${character?.image}`"
-                      class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
+                      class="h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
                     />
                   </div>
                 </template>
@@ -112,7 +112,7 @@
                   >
                     <img
                       :src="`assets/Characters/VS/${character?.image}`"
-                      class="mt-3 h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
+                      class="h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
                     />
                   </div>
                 </template>
