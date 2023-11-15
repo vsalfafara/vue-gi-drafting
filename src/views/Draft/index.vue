@@ -26,7 +26,9 @@
                   ? 'grid-cols-1'
                   : noOfSelection === 2
                   ? 'grid-cols-2'
-                  : 'grid-cols-3'
+                  : noOfSelection === 3
+                  ? 'grid-cols-3'
+                  : 'grid-cols-4'
               } md:grid-cols-${
                 gameType !== 'abyss' ? noOfSelection : noOfSelection / 2
               } justify-end`"
@@ -40,11 +42,9 @@
                   <div
                     :class="`${
                       gameType === 'abyss'
-                        ? 'h-40 w-48'
+                        ? 'h-40 w-28'
                         : 'h-36 w-20 sm:h-44 sm:w-24 md:h-56 md:w-32 lg:h-64 lg:w-40'
-                    } skew-x-12 overflow-hidden border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
-                      character
-                    )}`"
+                    } skew-x-12 overflow-hidden bg-gray-800 bg-opacity-70`"
                   >
                     <img
                       :src="`assets/Characters/VS/${character?.image}`"
@@ -90,7 +90,9 @@
                   ? 'grid-cols-1'
                   : noOfSelection === 2
                   ? 'grid-cols-2'
-                  : 'grid-cols-3'
+                  : noOfSelection === 3
+                  ? 'grid-cols-3'
+                  : 'grid-cols-4'
               } justify-end md:grid-cols-${
                 gameType !== 'abyss' ? noOfSelection : noOfSelection / 2
               }`"
@@ -104,11 +106,9 @@
                   <div
                     :class="`${
                       gameType === 'abyss'
-                        ? 'h-40 w-48'
+                        ? 'h-40 w-28'
                         : 'h-36 w-20 sm:h-44 sm:w-24 md:h-56 md:w-32 lg:h-64 lg:w-40'
-                    } skew-x-12 overflow-hidden border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
-                      character
-                    )}`"
+                    } skew-x-12 overflow-hidden bg-gray-800 bg-opacity-70`"
                   >
                     <img
                       :src="`assets/Characters/VS/${character?.image}`"
