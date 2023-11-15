@@ -134,30 +134,13 @@
         </FormItem>
         <FormItem label="Audience">
           <div class="flex w-full flex-wrap gap-2">
-            <Checkbox
-              v-for="user in audience"
-              name="audience"
-              :key="user.id"
-              :id="user.id"
-              :labelName="user.name"
-              :value="user"
+            <Options
               v-model="players"
-            />
-            <!-- <div v-for="user in audience" :key="user.id" class="flex">
-              <input
-                type="checkbox"
-                :id="user.id"
-                :value="user"
-                v-model="players"
-                class="peer hidden"
-              />
-              <label
-                :for="user.id"
-                class="cursor-pointer select-none rounded-lg border-2 border-gray-200 px-6 py-3 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:border-gray-200 peer-checked:bg-gray-200 peer-checked:text-gray-900"
-              >
-                {{ user.name }}
-              </label>
-            </div> -->
+              name="audience"
+              type="checkbox"
+              :options="audience"
+            >
+            </Options>
           </div>
         </FormItem>
         <FormItem label="First Pick">
@@ -295,6 +278,7 @@ import { ref, onMounted, onUnmounted, watch, computed } from "vue";
 import FormItem from "@/components/FormItem/index.vue";
 import Radio from "@/components/Input/Radio.vue";
 import Checkbox from "@/components/Input/Checkbox.vue";
+import Options from "@/components/Input/Options.vue";
 import Card from "@/components/Card/index.vue";
 import Modal from "@/components/Modal/index.vue";
 import Multiselect from "vue-multiselect";

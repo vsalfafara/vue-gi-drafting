@@ -41,14 +41,14 @@
                     :class="`${
                       gameType === 'abyss'
                         ? 'h-40 w-48'
-                        : 'h-36 w-28 sm:h-44 sm:w-32 md:h-56 md:w-40 lg:h-64 lg:w-48'
-                    } skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
+                        : 'h-36 w-20 sm:h-44 sm:w-24 md:h-56 md:w-32 lg:h-64 lg:w-40'
+                    } skew-x-12 overflow-hidden border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
                       character
                     )}`"
                   >
                     <img
                       :src="`assets/Characters/VS/${character?.image}`"
-                      class="h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
+                      class="h-full w-full skew-x-[-12deg] scale-[1.33] object-cover object-center"
                     />
                   </div>
                 </template>
@@ -105,14 +105,14 @@
                     :class="`${
                       gameType === 'abyss'
                         ? 'h-40 w-48'
-                        : 'h-36 w-28 sm:h-44 sm:w-32 md:h-56 md:w-40 lg:h-64 lg:w-48'
-                    } skew-x-12 overflow-hidden rounded-xl border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
+                        : 'h-36 w-20 sm:h-44 sm:w-24 md:h-56 md:w-32 lg:h-64 lg:w-40'
+                    } skew-x-12 overflow-hidden border-4 bg-gray-800 bg-opacity-70 ${getCharacterBorder(
                       character
                     )}`"
                   >
                     <img
                       :src="`assets/Characters/VS/${character?.image}`"
-                      class="h-full w-full skew-x-[-12deg] scale-125 object-cover object-center"
+                      class="h-full w-full skew-x-[-12deg] scale-[1.33] object-cover object-center"
                     />
                   </div>
                 </template>

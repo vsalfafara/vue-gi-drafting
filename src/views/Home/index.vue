@@ -19,58 +19,43 @@
             </template>
             <template v-else> {{ roomId ? "Join" : "Create" }} Room </template>
           </button>
+          <button type="button" class="info" @click="openUpdatesModal = true">
+            View Updates
+          </button>
         </form>
       </div>
     </Card>
-    <div class="flex flex-col gap-8">
-      <Card class="w-[25rem]">
-        <template #title>
-          <div class="p-5 text-center text-xl font-bold text-gray-300">
-            Latest Updates
-          </div>
-        </template>
-        <div class="p-5 pt-0 text-gray-300 drop-shadow-none">
-          <h3 class="text-md mb-1 font-semibold">New Characters</h3>
-          <div class="mb-4 flex justify-center gap-4">
-            <div
-              v-for="(character, index) in Characters.filter((character: Character) => character.isNew)"
-              :key="index"
-              class="flex flex-col items-center"
-            >
-              <img
-                :src="`assets/Characters/VS/${character.image}`"
-                class="mb-2 h-56"
-                alt=""
-              />
-              <p class="text-md font-semibold">{{ character.name }}</p>
-            </div>
-          </div>
-          <h3 class="text-md mb-1 font-semibold">Web App</h3>
-          <div class="text-gray-300 drop-shadow-none">
-            <ul class="list-disc pl-8">
-              <li>New VS screen</li>
-              <li>Updated color scheme for cards and texts</li>
-              <li>Updated Drafting Page layout</li>
-              <li>Updated VS layout</li>
-            </ul>
+    <Modal :is-open="openUpdatesModal" @close="openUpdatesModal = false">
+      <template #title>
+        <div class="text-xl font-bold text-gray-300">Latest Updates</div>
+      </template>
+      <div class="pt-0 text-gray-300 drop-shadow-none">
+        <h3 class="text-md mb-1 font-semibold">New Characters</h3>
+        <div class="mb-4 flex justify-center gap-4">
+          <div
+            v-for="(character, index) in Characters.filter((character: Character) => character.isNew)"
+            :key="index"
+            class="flex flex-col items-center"
+          >
+            <img
+              :src="`assets/Characters/VS/${character.image}`"
+              class="mb-2 h-56"
+              alt=""
+            />
+            <p class="text-md font-semibold">{{ character.name }}</p>
           </div>
         </div>
-      </Card>
-      <Card class="w-[25rem]">
-        <template #title>
-          <div class="p-5 text-center text-xl font-bold text-gray-300">
-            Upcoming
-          </div>
-        </template>
-        <div class="p-5 pt-0 text-gray-300 drop-shadow-none">
-          <h3 class="text-md mb-1 font-semibold">Characters</h3>
+        <h3 class="text-md mb-1 font-semibold">Web App</h3>
+        <div class="text-gray-300 drop-shadow-none">
           <ul class="list-disc pl-8">
-            <li>Navia</li>
-            <li>Chevreuse</li>
+            <li>New VS screen</li>
+            <li>Updated color scheme for cards and texts</li>
+            <li>Updated Drafting Page layout</li>
+            <li>Updated VS layout</li>
           </ul>
         </div>
-      </Card>
-    </div>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -80,12 +65,14 @@ import { useRouter, useRoute } from "vue-router";
 import { Character, Characters } from "@/data";
 import Card from "@/components/Card/index.vue";
 import Input from "@/components/Input/Input.vue";
+import Modal from "@/components/Modal/index.vue";
 import socket from "@/socket";
 
 const name = ref<string>("");
 const { push } = useRouter();
 const { roomId } = useRoute().params;
 const formSubmitted = ref<boolean>(false);
+const openUpdatesModal = ref<boolean>(false);
 
 onMounted(() => {
   socket.on("getRoomId", (roomId: string) => {
