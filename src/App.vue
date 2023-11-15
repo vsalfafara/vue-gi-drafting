@@ -46,19 +46,8 @@
 
 <script setup lang="ts">
 import { loadSlim } from "tsparticles-slim";
-import { imageList } from "@/data";
 
 const origin = window.location.origin;
-const head = document.getElementsByTagName("head")[0];
-
-console.log(origin);
-imageList.forEach((image) => {
-  const link = document.createElement("link");
-  link.rel = "preload";
-  link.href = `${origin}/${image}`;
-  link.as = "image";
-  head.appendChild(link);
-});
 
 const options = {
   particles: {

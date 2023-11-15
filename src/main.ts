@@ -6,12 +6,28 @@ import "boxicons";
 import "boxicons/css/boxicons.min.css";
 import App from "@/App.vue";
 import router from "./router/index";
+import { imageList } from "@/data";
 
-const pinia = createPinia();
-const app = createApp(App);
+function init() {
+  const origin = window.location.origin;
+  const head = document.getElementsByTagName("head")[0];
 
-app.use(router);
-app.use(Particles);
-app.use(pinia);
+  imageList.forEach((image) => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.href = `${origin}/${image}`;
+    link.as = "image";
+    head.appendChild(link);
+  });
 
-app.mount("#app");
+  const pinia = createPinia();
+  const app = createApp(App);
+
+  app.use(router);
+  app.use(Particles);
+  app.use(pinia);
+
+  app.mount("#app");
+}
+
+init();
