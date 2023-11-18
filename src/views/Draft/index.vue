@@ -545,7 +545,8 @@ onMounted(() => {
         bans.includes(character.bodyType?.toLowerCase()) ||
         bans.includes(character.weapon?.toLowerCase()) ||
         bans.includes(character.region?.toLowerCase()) ||
-        bans.includes(character.vision?.toLowerCase())
+        bans.includes(character.vision?.toLowerCase()) ||
+        bans.includes(character.version)
       );
     });
     autobannedCharacters.forEach((character: Character) =>
