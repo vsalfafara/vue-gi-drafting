@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="`${getPanelSize()} overflow-hidden border-4 border-green-500 bg-gray-800 bg-opacity-70 last:mr-0`"
+    :class="`${getPanelSize()} overflow-hidden bg-gray-800 bg-opacity-70 outline outline-2 outline-green-500`"
   >
     <template v-if="character">
       <img

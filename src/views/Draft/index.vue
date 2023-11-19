@@ -270,9 +270,9 @@
         <div
           class="mx-auto mb-4 flex w-full max-w-[1200px] justify-evenly gap-2"
         >
-          <div class="flex w-full flex-col justify-center">
+          <div class="flex w-full flex-col justify-center gap-2">
             <div
-              class="mb-2 flex justify-center gap-2 px-4 text-center text-3xl font-bold text-white"
+              class="flex justify-center gap-2 px-4 text-center text-3xl font-bold text-white"
             >
               <p class="truncate">
                 {{ selection[0]?.player.name }}
@@ -298,9 +298,9 @@
               />
             </div>
           </div>
-          <div class="flex w-full flex-col justify-center">
+          <div class="flex w-full flex-col justify-center gap-2">
             <div
-              class="mb-2 flex justify-center gap-2 px-4 text-center text-3xl font-bold text-white"
+              class="flex justify-center gap-2 px-4 text-center text-3xl font-bold text-white"
             >
               <p class="truncate">
                 {{ selection[1]?.player.name }}
@@ -463,7 +463,6 @@ import Picks from "./components/panels/Picks.vue";
 import Bans from "./components/panels/Bans.vue";
 import { ssGetAutoban, ssGetSelection, ssGetUser } from "@/storage";
 import { User } from "@/types/storage";
-import { getCharacterBorder } from "@/mixins/characterBorder";
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { toast } from "vue3-toastify";
