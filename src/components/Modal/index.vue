@@ -27,18 +27,21 @@
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full max-w-lg transform overflow-hidden rounded-2xl bg-slate-900 p-6 text-left align-middle shadow-xl transition-all"
+              class="w-full max-w-lg transform divide-y divide-slate-700 overflow-hidden rounded-2xl bg-slate-900 text-left align-middle shadow-xl transition-all"
             >
               <DialogTitle
                 as="h3"
-                class="mb-6 text-2xl font-medium leading-6 text-gray-300"
+                class="p-6 text-2xl font-medium leading-6 text-gray-300"
               >
                 <slot name="title"></slot>
               </DialogTitle>
-              <div class="mb-4">
+              <div class="p-6">
                 <slot></slot>
               </div>
-              <div class="flex flex-wrap justify-end gap-2">
+              <div
+                v-if="slots.footer"
+                class="flex flex-wrap justify-end gap-2 p-4"
+              >
                 <slot name="footer"></slot>
               </div>
             </DialogPanel>
@@ -50,6 +53,7 @@
 </template>
 
 <script setup lang="ts">
+import { useSlots } from "vue";
 import {
   TransitionRoot,
   TransitionChild,
@@ -67,6 +71,7 @@ type Emits = {
 };
 
 const { isOpen } = defineProps<Props>();
+const slots = useSlots();
 
 const emit = defineEmits<Emits>();
 </script>
