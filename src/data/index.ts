@@ -180,6 +180,18 @@ export const Characters: Character[] = [
     version: "4",
   },
   {
+    name: "Chevreuse",
+    vision: "Pyro",
+    image: "Chevreuse.webp",
+    rarity: "Rare",
+    sex: "Female",
+    bodyType: "Teenager",
+    weapon: "Polearm",
+    region: "Fontaine",
+    version: "4",
+    isNew: true,
+  },
+  {
     name: "Chongyun",
     vision: "Cryo",
     image: "Chongyun.webp",
@@ -552,7 +564,6 @@ export const Characters: Character[] = [
     weapon: "Claymore",
     region: "Fontaine",
     version: "4",
-    isNew: true,
   },
   {
     name: "Neuvillette",
