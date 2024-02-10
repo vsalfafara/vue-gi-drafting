@@ -48,9 +48,7 @@
         <h3 class="text-md mb-1 font-semibold">Web App</h3>
         <div class="text-gray-300 drop-shadow-none">
           <ul class="list-disc pl-8">
-            <li>
-              Added new option on auto bans for version-released characters
-            </li>
+            <li>Enhanced character VS images</li>
           </ul>
         </div>
       </div>
