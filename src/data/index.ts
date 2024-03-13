@@ -191,6 +191,18 @@ export const Characters: Character[] = [
     version: "4",
   },
   {
+    name: "Chiori",
+    vision: "Geo",
+    image: "Chiori.webp",
+    rarity: "VeryRare",
+    sex: "Female",
+    bodyType: "Teenager",
+    weapon: "Sword",
+    region: "Inazuma",
+    version: "4",
+    isNew: true,
+  },
+  {
     name: "Chongyun",
     vision: "Cryo",
     image: "Chongyun.webp",
@@ -332,7 +344,6 @@ export const Characters: Character[] = [
     weapon: "Claymore",
     region: "Liyue",
     version: "4",
-    isNew: true,
   },
   {
     name: "Ganyu",
@@ -828,7 +839,6 @@ export const Characters: Character[] = [
     weapon: "Catalyst",
     region: "Liyue",
     version: "4",
-    isNew: true,
   },
   {
     name: "Xingqiu",
