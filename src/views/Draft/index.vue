@@ -383,10 +383,10 @@
         </div>
       </div>
       <template #footer>
-        <div class="flex w-full items-center gap-2">
+        <form class="flex w-full items-center gap-2" @submit.prevent="sendChat">
           <Input v-model="message" placeholder="Type your message..." />
           <button class="primary" @click="sendChat">Send</button>
-        </div>
+        </form>
       </template>
     </Modal>
     <Modal :is-open="showHelp" @close="showHelp = false">
