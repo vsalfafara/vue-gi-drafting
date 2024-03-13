@@ -361,11 +361,11 @@
         <div
           v-for="(chat, index) in chatList"
           :key="index"
-          :class="`m-2 bg-purple-100 px-4 py-2 ${
+          :class="`m-2 bg-slate-800 px-4 py-2 text-white ${
             chat.user.id === user.id ? 'text-right' : 'text-left'
           }`"
         >
-          <p class="mb-2 text-sm text-purple-900">
+          <p class="mb-2 text-sm">
             <span
               :class="`${
                 chat.user.id === user.id ? 'flex flex-row-reverse' : ''
@@ -376,7 +376,7 @@
                 :class="`${chat.user.id === user.id ? 'ml-2' : 'mr-2'}`"
                 >&#128081;</span
               >
-              <span>{{ chat.user.name }}</span>
+              <span class="font-bold">{{ chat.user.name }}</span>
             </span>
           </p>
           <p class="text-sm">{{ chat.message }}</p>
