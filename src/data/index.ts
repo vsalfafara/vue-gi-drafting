@@ -793,7 +793,7 @@ export const Characters: Character[] = [
     sex: "Male",
     bodyType: "Teenager",
     weapon: "Catalyst",
-    region: "Inazuma",
+    region: "Sumeru",
     version: "3",
   },
   {
