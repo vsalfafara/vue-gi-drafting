@@ -48,7 +48,7 @@
         <h3 class="text-md mb-1 font-semibold">Web App</h3>
         <div class="text-gray-300 drop-shadow-none">
           <ul class="list-disc pl-8">
-            <li>Enhanced Chat Box UI</li>
+            <li>Fixed Itto VS image</li>
           </ul>
         </div>
       </div>

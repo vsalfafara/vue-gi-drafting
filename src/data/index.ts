@@ -114,6 +114,18 @@ export const Characters: Character[] = [
     version: "2",
   },
   {
+    name: "Arlecchino",
+    vision: "Pyro",
+    image: "Arlecchino.webp",
+    rarity: "VeryRare",
+    sex: "Female",
+    bodyType: "Adult",
+    weapon: "Polearm",
+    region: "Fontaine",
+    version: "4",
+    isNew: true,
+  },
+  {
     name: "Baizhu",
     vision: "Dendro",
     image: "Baizhu.webp",
@@ -200,7 +212,6 @@ export const Characters: Character[] = [
     weapon: "Sword",
     region: "Inazuma",
     version: "4",
-    isNew: true,
   },
   {
     name: "Chongyun",
