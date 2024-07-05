@@ -233,7 +233,6 @@ export const Characters: Character[] = [
     weapon: "Sword",
     region: "Fontaine",
     version: "4",
-    isNew: true,
   },
   {
     name: "Collei",
@@ -729,7 +728,6 @@ export const Characters: Character[] = [
     weapon: "Bow",
     region: "Sumeru",
     version: "4",
-    isNew: true,
   },
   {
     name: "Shenhe",
@@ -752,6 +750,18 @@ export const Characters: Character[] = [
     weapon: "Catalyst",
     region: "Inazuma",
     version: "2",
+  },
+  {
+    name: "Sigewinne",
+    vision: "Hydro",
+    image: "Sigewinne.webp",
+    rarity: "VeryRare",
+    sex: "Female",
+    bodyType: "Child",
+    weapon: "Bow",
+    region: "Fontaine",
+    version: "4",
+    isNew: true,
   },
   {
     name: "Sucrose",
