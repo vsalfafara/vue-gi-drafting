@@ -212,7 +212,7 @@
             >
               <img
                 :src="`assets/Characters/Splash/${splash?.image}`"
-                class="h-full w-auto"
+                class="max-h-[500px] w-auto"
                 alt=""
               />
             </TransitionRoot>
