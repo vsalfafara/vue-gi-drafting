@@ -212,6 +212,18 @@ export const Characters: Character[] = [
     version: "4",
   },
   {
+    name: "Chasca",
+    vision: "Anemo",
+    image: "Chasca.webp",
+    rarity: "VeryRare",
+    sex: "Female",
+    bodyType: "Adult",
+    weapon: "Bow",
+    region: "Natlan",
+    version: "5",
+    isNew: true,
+  },
+  {
     name: "Chevreuse",
     vision: "Pyro",
     image: "Chevreuse.webp",
