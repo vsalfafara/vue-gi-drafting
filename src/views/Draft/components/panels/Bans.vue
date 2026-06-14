@@ -19,7 +19,5 @@ type PanelProps = {
   character: Character | null;
 };
 
-const { character } = withDefaults(defineProps<PanelProps>(), {
-  character: null,
-});
+const { character = null } = defineProps<PanelProps>();
 </script>

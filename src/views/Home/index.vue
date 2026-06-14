@@ -31,7 +31,7 @@
       </template>
       <div class="pt-0 text-gray-300 drop-shadow-none">
         <h3 class="text-md mb-1 font-semibold">New Characters</h3>
-        <div class="mb-4 flex justify-center gap-4">
+        <div class="mb-4 grid grid-cols-4 justify-center gap-4">
           <div
             v-for="(character, index) in Characters.filter((character: Character) => character.isNew)"
             :key="index"
@@ -39,7 +39,7 @@
           >
             <img
               :src="`assets/Characters/VS/${character.image}`"
-              class="mb-2 h-56"
+              class="mb-2 h-full"
               alt=""
             />
             <p class="text-md font-semibold">{{ character.name }}</p>
@@ -48,7 +48,8 @@
         <h3 class="text-md mb-1 font-semibold">Web App</h3>
         <div class="text-gray-300 drop-shadow-none">
           <ul class="list-disc pl-8">
-            <li>Fixed Chiori panel image</li>
+            <li>Adjusted a few characters' images</li>
+            <li>Adjusted a few characters' origin of birth/operation</li>
           </ul>
         </div>
       </div>

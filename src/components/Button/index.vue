@@ -21,10 +21,7 @@ type Props = {
   disabled?: boolean;
 };
 
-const { variant, disabled } = withDefaults(defineProps<Props>(), {
-  variant: "primary",
-  disabled: false,
-});
+const { variant = "primary", disabled = false } = defineProps<Props>();
 </script>
 
 <style></style>

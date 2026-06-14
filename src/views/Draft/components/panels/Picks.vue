@@ -17,15 +17,15 @@ import { Character } from "@/data";
 
 type PanelProps = {
   character: Character | null;
-  gameType: string | string[];
-  mode: string | string[];
+  gameType: string | undefined;
+  mode: string | undefined;
 };
 
-const { character, gameType, mode } = withDefaults(defineProps<PanelProps>(), {
-  character: null,
-  gameType: "",
-  mode: "",
-});
+const {
+  character = null,
+  gameType = "",
+  mode = "",
+} = defineProps<PanelProps>();
 
 function getPanelSize() {
   if (gameType !== "abyss" && mode !== "4v4") {
