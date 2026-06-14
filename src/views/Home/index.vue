@@ -9,7 +9,7 @@
       <div class="p-5 pt-0 text-gray-300 drop-shadow-none">
         <form class="flex flex-col gap-2" @submit.prevent="submit">
           <Input v-model="name" placeholder="Enter username" />
-          <button class="primary" :disabled="name === ''">
+          <button class="primary" :disabled="!name.length || !serverAlive">
             <template v-if="formSubmitted">
               <img
                 src="/assets/Misc/loading.svg"
@@ -71,8 +71,10 @@ const { push } = useRouter();
 const { roomId } = useRoute().params;
 const formSubmitted = ref<boolean>(false);
 const openUpdatesModal = ref<boolean>(false);
+const serverAlive = ref<boolean>(false);
+const intervalId = ref();
 
-onMounted(() => {
+onMounted(async () => {
   socket.on("getRoomId", (roomId: string) => {
     formSubmitted.value = false;
     push({
@@ -82,11 +84,22 @@ onMounted(() => {
       },
     });
   });
+
+  await healthCheck();
+  intervalId.value = setInterval(healthCheck, 15000);
 });
 
 onUnmounted(() => {
   socket.off("getRoomId");
+  clearInterval(intervalId.value);
 });
+
+async function healthCheck() {
+  const response = await fetch(import.meta.env.VITE_SOCKET);
+  const status = response.status;
+
+  serverAlive.value = status === 200;
+}
 
 function createRoom() {
   if (name.value) {
